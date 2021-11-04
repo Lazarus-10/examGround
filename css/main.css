@@ -1,0 +1,287 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.container2 {
+  background-color: #555;
+  color: #ddd;
+  border-radius: 0.625rem;
+  padding: 20px;
+  font-family: "Droid Serif";
+  max-width: 700px;
+}
+
+.question {
+  width: 100%;
+}
+
+.options {
+  position: relative;
+  padding: 0px 0px 0.75rem 2.8125rem;
+}
+
+#options label {
+  display: block;
+  margin-bottom: 0.125rem;
+  font-size: 1rem;
+  padding-top: 1.44rem;
+  cursor: pointer;
+}
+
+.options input {
+  opacity: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 1.25rem;
+  left: 0;
+  height: 1.5625rem;
+  width: 1.5625rem;
+  background-color: #555;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+}
+
+.options input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.options .checkmark:after {
+  content: "";
+  width: 0.625rem;
+  height: 0.625rem;
+  display: block;
+  background: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 400ms ease-in-out 0s;
+}
+
+.options input[type="radio"]:checked ~ .checkmark {
+  background: #21bf73;
+  transition: 300ms ease-in-out 0s;
+}
+
+.options input[type="radio"]:checked ~ .checkmark:after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.qus .btn-primary {
+  padding: 5px 25px;
+  background-color: #555;
+  color: #ddd;
+  border: 1px solid #ddd;
+}
+
+.qus .btn-primary:hover {
+  background-color: #21bf73;
+  border: 1px solid rgb(31, 30, 30);
+  color: #000;
+}
+
+body {
+  width: 100%;
+  font: 15px "Century Gothic", "Times Roman", sans-serif;
+  background: #eee;
+  min-height: 550px;
+  background-attachment: fixed;
+  min-height: 100%;
+}
+.body-with-footer {
+  min-height: calc(100vh - 91px);
+}
+.body-without-footer {
+  min-height: calc(100vh);
+  background-color: #333;
+}
+.bodyClass {
+  background: url(../image/iiest.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 600px;
+  width: 100%;
+}
+.bodyClass input:focus,
+select:focus {
+  margin-left: 15px;
+}
+
+.display-off {
+  display: none;
+}
+
+.modal.fade .modal-dialog {
+  transform: translateY(-25%);
+  opacity: 0;
+  -webkit-transition: all 0.4s ease-out;
+  -o-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+  will-change: transform;
+}
+.modal.fade.show .modal-dialog {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+.input {
+  background-color: #eee;
+}
+
+.input:focus {
+  background-color: #fff;
+}
+
+@font-face {
+  font-family: "typo";
+  src: url("../fonts/typo.ttf");
+}
+
+@font-face {
+  font-family: "gothic";
+  src: url("../fonts/gothics.ttf");
+}
+
+.panel {
+  margin: 2.5rem;
+  padding: 20px;
+  font: 15px "Century Gothic", "Times Roman", sans-serif;
+  background-color: #aac1d3;
+  background-color: transparent;
+  text-align: center;
+}
+
+@media (max-width: 770px) {
+  .question {
+    width: 100%;
+    word-spacing: 2px;
+  }
+
+  .panel {
+    width: 100%;
+    margin: 40px 0;
+    padding: 0;
+  }
+}
+
+.already {
+  display: block;
+  margin-top: 15px;
+  color: #00ffd0;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+}
+.already:hover {
+  color: #00ffd0;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.title {
+  font-family: "typo";
+}
+
+.header {
+  background: #202020;
+  height: 70px;
+}
+.logo {
+  display: block;
+  font-family: "typo";
+  font-size: 2.5rem;
+  color: white;
+  margin: 15px;
+}
+
+.title1 {
+  font: 16px "Century Gothic", "Times Roman", sans-serif;
+}
+.title2 {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 20px;
+}
+
+.sub1 {
+  width: 90px;
+  color: #202020;
+  background: orange;
+  font-size: 15px;
+  height: 35px;
+  margin: 20px;
+  padding: 10px;
+  width: 100px;
+}
+
+.sub {
+  width: 40%;
+  background-color: #06fb14;
+  color: #26282a;
+  font-size: 20px;
+  padding: 5px 0px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.sub:active {
+  transform: scale(0.8);
+  background-color: #2196f3;
+}
+
+.footer {
+  font-size: 15px;
+  text-align: center;
+  border-top: 1px solid;
+  border-color: #323232;
+  background-color: #202020;
+}
+
+.footer a {
+  margin: 25px;
+  color: white;
+  text-decoration: none;
+  font: 15px "Century Gothic", "Times Roman", sans-serif;
+}
+.footer a:hover {
+  text-decoration: none;
+  color: #2196f3;
+  border-top: 2px solid;
+  border-color: orange;
+}
+
+.box {
+  padding: 9px;
+}
+hr {
+  color: #000000;
+}
+.top {
+  margin-top: 20px;
+}
+.log1 {
+  font: 15px "Ubuntu", sans-serif;
+  color: orange;
+  margin-left: 10px;
+  margin-right: 60px;
+}
+
+.log {
+  margin: 10px;
+  margin-left: 5px;
+  color: orange;
+  text-decoration: none;
+  font-size: 20px;
+  font-size: 15px;
+}
+.log:hover {
+  color: #9acd32;
+  border-top: 2px solid;
+  border-color: orange;
+  text-decoration: none;
+}

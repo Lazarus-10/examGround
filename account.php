@@ -582,11 +582,8 @@ if (!(isset($_SESSION['email']))) {
     z.classList.add("display-off");
     
     const t = document.getElementById("bg");
-    console.log(t);
     t.classList.remove("body-with-footer");
-    console.log(t);
     t.classList.add("body-without-footer");
-    console.log(t);
       </script>';
   }
   ?>

@@ -17,7 +17,7 @@
   <script>
     var elem = document.documentElement;
 
-    function openFullscreen2() {
+    function openFullscreen() {
       if (elem.requestFullscreen) {
         elem.requestFullscreen();
       } else if (elem.webkitRequestFullscreen) {
@@ -29,7 +29,7 @@
       }
     }
 
-    function closeFullscreen2() {
+    function closeFullscreen() {
       if (document.fullscreenElement) {
         document.exitFullscreen();
       } else if (document.webkitExitFullscreen) {
@@ -65,7 +65,7 @@ if (!(isset($_SESSION['email']))) {
 
   <!----------------------- Setting up the navbar for header ------------------------->
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark title1" id="home-nav">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark title1" id="main-nav">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <a class="navbar-brand" href="account.php?q=1">Exam Ground</a>
@@ -575,9 +575,6 @@ if (!(isset($_SESSION['email']))) {
     echo
     '<script type="text/javascript">
     
-    const x = document.getElementById("home-nav");
-    x.classList.add("display-off");
-    
     const y = document.getElementById("main-nav");
     y.classList.add("display-off");
     
@@ -585,8 +582,11 @@ if (!(isset($_SESSION['email']))) {
     z.classList.add("display-off");
     
     const t = document.getElementById("bg");
+    console.log(t);
     t.classList.remove("body-with-footer");
+    console.log(t);
     t.classList.add("body-without-footer");
+    console.log(t);
       </script>';
   }
   ?>

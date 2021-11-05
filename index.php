@@ -12,7 +12,7 @@
 
 
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-  <script src="https://use.fontawesome.com/dd653cca0e.js"></script>
+  <script src="https://kit.fontawesome.com/be42f3d5b4.js" crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 
   <script src="js/jquery.js" type="text/javascript"></script>
@@ -67,7 +67,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="index.html">Exam Ground</a>
-        <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#signInModal">Sign
+        <button class="btn btn-primary raise" type="button" data-bs-toggle="modal" data-bs-target="#signInModal">Sign
           In</button>
       </div>
     </nav>
@@ -75,45 +75,6 @@
   <!--header closed-->
 
 
-
-
-  <!--sign in modal start-->
-  <div class="modal fade" id="signInModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title" style="font-family:'typo' "><span>Log In</span></h4>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body title1">
-          <form role="form" class="form-horizontal" action="login.php?q=index.php" method="POST">
-            <fieldset>
-              <!-- Text input -->
-              <div class="row mb-2">
-                <div class="col-sm-10 col-md-6">
-                  <input name="email" id="logIN" maxlength="20" placeholder="Enter your email-id" type="email" class="form-control input" autofocus>
-                </div>
-              </div>
-
-              <!-- Password input-->
-              <div class="row mb-2">
-                <!-- <label for="password" class="col-sm-2 col-form-label"></label> -->
-                <div class="col-sm-10 col-md-6">
-                  <input name="password" maxlength="15" placeholder="Enter your Password" type="password" class="form-control input">
-                </div>
-              </div>
-            </fieldset>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Log In</button>
-            </div>
-          </form>
-        </div>
-      </div> <!-- model-content -->
-    </div> <!-- /.modal-dialog -->
-  </div> <!-- /.modal -->
-  <!--sign in modal closed-->
 
   <!-- Sign Up form -->
   <div id="mybg-div" class="bodyClass">
@@ -220,7 +181,45 @@
 <!--footer end-->
 
 
-<!-- Modal For Developers-->
+<!--sign in modal start-->
+<div class="modal fade" id="signInModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" style="font-family:'typo' "><span>Log In</span></h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body title1">
+        <form role="form" class="form-horizontal" action="login.php?q=index.php" method="POST">
+          <fieldset>
+            <!-- Text input -->
+            <div class="row mb-2">
+              <div class="col-sm-10 col-md-6">
+                <input id="logIN" name="email" maxlength="20" placeholder="Enter your email-id" class="form-control input" type="email" autofocus>
+              </div>
+            </div>
+
+            <!-- Password input-->
+            <div class="row mb-2">
+              <!-- <label for="password" class="col-sm-2 col-form-label"></label> -->
+              <div class="col-sm-10 col-md-6">
+                <input name="password" maxlength="15" placeholder="Enter your Password" type="password" class="form-control input">
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Log In</button>
+          </div>
+        </form>
+      </div>
+    </div> <!-- model-content -->
+  </div> <!-- /.modal-dialog -->
+</div> <!-- /.modal -->
+<!--sign in modal closed-->
+
+
 <!-- Modal For Developers-->
 <div class="modal fade title1" id="developers" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog">
@@ -306,29 +305,18 @@
 
 
 <script>
-  $('#signInModal').on('shown.bs.modal', function() {
-    $('#logIN').focus();
+  var myModal1 = document.getElementById('signInModal')
+  var myInput1 = document.getElementById('logIN')
+
+  myModal1.addEventListener('shown.bs.modal', function() {
+    myInput1.focus()
   })
-  $('#adminLogin').on('shown.bs.modal', function() {
-    $('$uName').focus();
+  var myModal = document.getElementById('adminLogin')
+  var myInput = document.getElementById('uName')
+
+  myModal.addEventListener('shown.bs.modal', function() {
+    myInput.focus()
   })
-
-  // $(function() {
-  //   var div = $('#mybg-div');
-  //   var backgrounds = ['url("image/iiest2.jpg")', 'url("image/iiest.jpg")'];
-  //   var current = 0;
-
-  //   function nextBackground() {
-  //     div.css(
-  //       'background',
-  //       backgrounds[current = ++current % backgrounds.length]
-  //     );
-
-  //     setTimeout(nextBackground, 1000);
-  //   }
-  //   setTimeout(nextBackground, 1000);
-  //   div.css('background', backgrounds[0]);
-  // });
 </script>
 
 </html>

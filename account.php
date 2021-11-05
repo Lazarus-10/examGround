@@ -78,19 +78,18 @@ if (!(isset($_SESSION['email']))) {
 
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" href="account.php?q=1">Home</a>
+            <a class="nav-link <?php if (@$_GET['q'] == 1) echo ' active'; ?>" href="account.php?q=1">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="account.php?q=2">
+            <a class="nav-link <?php if (@$_GET['q'] == 2) echo ' active'; ?>" href="account.php?q=2">
               History
             </a>
 
           </li>
           <li class="nav-item">
-            <a class="nav-link " href="account.php?q=3">Ranking</a>
+            <a class="nav-link <?php if (@$_GET['q'] == 3) echo ' active'; ?>" href="account.php?q=3">Ranking</a>
           </li>
         </ul>
-
         <form class="d-flex">
           <span class="pull-right title1" style="justify-content:center;">
             <span class="log1">
@@ -589,6 +588,14 @@ if (!(isset($_SESSION['email']))) {
   ?>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script>
+    var myModal = document.getElementById('adminLogin')
+    var myInput = document.getElementById('uName')
+
+    myModal.addEventListener('shown.bs.modal', function() {
+      myInput.focus()
+    })
+  </script>
 
 </body>
 

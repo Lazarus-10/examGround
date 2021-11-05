@@ -310,12 +310,13 @@ hr {
   font: 15px "Ubuntu", sans-serif;
   color: orange;
   margin-left: 10px;
-  margin-right: 60px;
+  margin-right: 15px;
 }
 
 .log {
   margin: 10px;
   margin-left: 5px;
+  margin-right: 2px;
   color: orange;
   text-decoration: none;
   font-size: 20px;

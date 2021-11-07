@@ -51,11 +51,14 @@
         <span class="pull-right title1" style="justify-content:center;">
           <span class="log1">
             <span> Hello, </span>
-            <a class="me-0 log" href="dash.php?q=0">Saif</a>
+            <a class="me-0 log" href="dash.php?q=0"><?php echo $name; ?></a>
           </span>
-          <a href="#" data-bs-toggle="modal" data-bs-target="#signOutModal" class="log">
-            | &nbsp;&nbsp;&nbsp;Signout
-          </a>
+          <span>
+            <span style="color: white;">|&nbsp;</span>
+            <a href="logout.php?q=account.php" class="log">
+              Signout
+            </a>
+          </span>
         </span>
 
       </form>
@@ -113,9 +116,20 @@
 
         <?php if (@$_GET['q'] == 0) {
 
+          echo '<script>closeFullscreen();</script>';
           $result = mysqli_query($con, "SELECT * FROM quiz ORDER BY date DESC") or die('Error');
-          echo  '<div class="panel"><div class="table-responsive"><table class="table table-striped title1">
-<tr><td><b>S.N.</b></td><td><b>Topic</b></td><td><b>Total question</b></td><td><b>Marks</b></td><td><b>Time limit</b></td><td></td></tr>';
+          /***************  Printing the table headings ***************/
+          echo  '<div class="panel">
+          <div class="table-responsive">
+            <table class="table table-hover table-striped title1" style = "font-weight:bold;">
+              <tr class = "table-dark" >
+                <td>S.N.</td>
+                <td>Topic</td>
+                <td>Total question</td>
+                <td>Marks</td>
+                <td>Time limit</td>
+                <td></td>
+              </tr>';
           $c = 1;
           while ($row = mysqli_fetch_array($result)) {
             $title = $row['title'];
@@ -123,14 +137,38 @@
             $sahi = $row['sahi'];
             $time = $row['time'];
             $eid = $row['eid'];
+            $seed = FLOOR(RAND() * 100);
+
+            //fetch the exams already given by user
             $q12 = mysqli_query($con, "SELECT score FROM history WHERE eid='$eid' AND email='$email'") or die('Error98');
             $rowcount = mysqli_num_rows($q12);
-            if ($rowcount == 0) {
-              echo '<tr><td>' . $c++ . '</td><td>' . $title . '</td><td>' . $total . '</td><td>' . $sahi * $total . '</td><td>' . $time . '&nbsp;min</td>
-	<td><b><a href="account.php?q=quiz&step=2&eid=' . $eid . '&n=1&t=' . $total . '" class="pull-right btn sub1" style="margin:0px;background:#99cc32"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>&nbsp;<span class="title1"><b>Start</b></span></a></b></td></tr>';
+            /***************  Printing the exams information ***************/
+            if ($rowcount == 0) {  //if the user haven't given the exam previously
+              echo  '<tr> 
+              <td style="color:blue">' . $c++ . '</td>
+              <td style="color:#042391">' . $title . '</td>
+              <td>' . $total . '</td>
+              <td style="color:green">' . $sahi * $total . '</td>
+              <td style="color:#ef3535">' . $time . '&nbsp;min</td>
+              <td>
+                <b>
+                    <a href="account.php?q=quiz&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '" class="pull-right btn btn-success" style="margin:0px; padding-right: 1.30rem; padding-left: 1.30rem;" ><b> Start </b></a>
+                </b>
+              </td>
+            </tr>';
             } else {
-              echo '<tr style="color:#99cc32"><td>' . $c++ . '</td><td>' . $title . '&nbsp;<span title="This quiz is already solve by you" class="glyphicon glyphicon-ok" aria-hidden="true"></span></td><td>' . $total . '</td><td>' . $sahi * $total . '</td><td>' . $time . '&nbsp;min</td>
-	<td><b><a href="update.php?q=quizre&step=25&eid=' . $eid . '&n=1&t=' . $total . '" class="pull-right btn sub1" style="margin:0px;background:red"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>&nbsp;<span class="title1"><b>Restart</b></span></a></b></td></tr>';
+              echo  '<tr>
+              <td style="color:blue">' . $c++ . '</td>
+              <td style="color:#042391">' . $title . '&nbsp;<span title="This quiz is already solve by you" class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+              <td>' . $total . '</td>
+              <td style="color:green">' . $sahi * $total . '</td>
+              <td style="color:#ef3535">' . $time . '&nbsp;min</td>
+              <td>
+                <b>
+                  <a class="pull-right btn btn-warning" href = "account.php?q=restart&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '"  style="margin:0px;"><b> Restart </b></span></a>
+                </b>
+              </td>
+            </tr>';
             }
           }
           $c = 0;

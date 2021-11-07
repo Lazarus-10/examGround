@@ -184,7 +184,7 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2) {
   if ($sn != $total) {
     $sn++;
     header("location:account.php?q=quiz&step=2&eid=$eid&n=$sn&t=$total&s=$seed") or die('Error152');
-  } else if ($_SESSION['key'] != 'saif914067') {  //if the user is not admin => update his score
+  } else if ($_SESSION['key'] != 'saif91406714') {  //if the user is not admin => update his score
     $q = mysqli_query($con, "SELECT score FROM history WHERE eid='$eid' AND email='$email'") or die('Error156');
     while ($row = mysqli_fetch_array($q)) {
       $s = $row['score'];

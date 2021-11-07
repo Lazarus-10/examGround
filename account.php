@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="overflow-x: hidden;">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />

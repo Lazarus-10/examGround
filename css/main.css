@@ -21,7 +21,7 @@
 }
 
 .body-without-footer {
-  background-image: url(../image/pix2.jpg);
+  background-image: url(../image/bg5.jpg);
   min-height: calc(100vh);
   opacity: 1;
 }
@@ -269,6 +269,18 @@ select:focus {
   box-shadow: 0 0.5em 0.5em -0.4em adjust-hue(#fff, 45deg);
   transform: translateX(-0.25em);
   transition: 0.4s;
+}
+.quizBtn {
+  box-shadow: 4px 4px 4px black;
+  text-shadow: 2px 2px 4px rgb(0, 0, 0);
+  transition: transform ease-out 0.2s;
+}
+
+.quizBtn:hover,
+.quizBtn:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em adjust-hue(#fff, 45deg);
+  transform: translateY(-0.15em);
+  transition: 0.2s;
 }
 .sub:active {
   transform: scale(0.8);

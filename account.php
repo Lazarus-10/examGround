@@ -146,7 +146,9 @@ if (!(isset($_SESSION['email']))) {
                             <td>S.N.</td>
                             <td>Topic</td>
                             <td>Total question</td>
-                            <td>Marks</td>
+                            <td>Positive</td>
+                            <td>Negative</td>
+                            <td>Max. Marks</td>
                             <td>Time limit</td>
                             <td></td>
                           </tr>';
@@ -157,6 +159,7 @@ if (!(isset($_SESSION['email']))) {
               $sahi = $row['sahi'];
               $time = $row['time'];
               $eid = $row['eid'];
+              $neg = $row['wrong'];
               $seed = FLOOR(RAND() * 100);
 
               //fetch the exams already given by user
@@ -168,11 +171,13 @@ if (!(isset($_SESSION['email']))) {
                           <td style="color:blue">' . $c++ . '</td>
                           <td style="color:#042391">' . $title . '</td>
                           <td>' . $total . '</td>
+                          <td style="color:green">+' . $sahi . '</td>
+                          <td style="color:red">-' . $neg . '</td>
                           <td style="color:green">' . $sahi * $total . '</td>
                           <td style="color:#ef3535">' . $time . '&nbsp;min</td>
                           <td>
                             <b>
-                                <a href="account.php?q=quiz&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '" class="pull-right btn btn-success" style="margin:0px; padding-right: 1.30rem; padding-left: 1.30rem;" ><b> Start </b></a>
+                                <a href="account.php?q=quiz&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '" class="pull-right btn btn-success quizBtn" style="margin:0px; padding-right: 1.30rem; padding-left: 1.30rem;" ><b> Start </b></a>
                             </b>
                           </td>
                         </tr>';
@@ -181,11 +186,13 @@ if (!(isset($_SESSION['email']))) {
                           <td style="color:blue">' . $c++ . '</td>
                           <td style="color:#042391">' . $title . '&nbsp;<span title="This quiz is already solve by you" class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
                           <td>' . $total . '</td>
+                          <td style="color:green">+' . $sahi . '</td>
+                          <td style="color:red">-' . $neg . '</td>
                           <td style="color:green">' . $sahi * $total . '</td>
                           <td style="color:#ef3535">' . $time . '&nbsp;min</td>
                           <td>
                             <b>
-                              <a class="pull-right btn btn-warning" href = "account.php?q=restart&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '"  style="margin:0px;"><b> Restart </b></span></a>
+                              <a class="pull-right btn btn-warning quizBtn" href = "account.php?q=restart&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '"  style="margin:0px; text-shadow: 2px 2px 4px #fff; "><b> Restart </b></span></a>
                             </b>
                           </td>
                         </tr>';

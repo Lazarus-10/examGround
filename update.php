@@ -160,7 +160,7 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2) {
   //Reset the history for that quiz
   if ($sn == 1) {
     if ($_SESSION['key'] == 'saif91406714') {
-      $q = mysqli_query($con, "INSERT INTO user (`name`, `email`) VALUES ('Admin', '$email')");
+      $q = mysqli_query($con, "INSERT INTO user (`name`, `email`) VALUES ('Admin', '$email')"); // we have to first add the user, as the history table is referencing from user table
     }
     $q = mysqli_query($con, "SELECT * FROM history WHERE eid='$eid' AND email='$email' ") or die('Error139');
     $rowcount = mysqli_num_rows($q);

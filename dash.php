@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/font.css">
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
   <script src="https://use.fontawesome.com/dd653cca0e.js"></script>
 
@@ -56,7 +55,7 @@
           <span>
             <span style="color: white;">|&nbsp;</span>
             <a href="logout.php?q=account.php" class="log">
-              Signout
+              <i class="fa fa-sign-out-alt"></i>Signout
             </a>
           </span>
         </span>
@@ -67,7 +66,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary" id="main-nav">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
-      <a class="navbar-brand" href="dash.php?q=0">Dashboard</a>
+      <a class="navbar-brand" href="dash.php?q=0"><i class="fa fa-cog fa-spin fa-lg fa-fw"></i>Dashboard</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -76,24 +75,24 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link <?php if (@$_GET['q'] == 0) echo ' active'; ?> " aria-current="page" href=" dash.php?q=0">Home</a>
+            <a class="nav-link <?php if (@$_GET['q'] == 0) echo ' active'; ?> " aria-current="page" href=" dash.php?q=0"><i class="fa fa-home fa-lg"></i>&nbsp;Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link <?php if (@$_GET['q'] == 1) echo ' active'; ?>" href="dash.php?q=1">
-              User
+              <i class="fa fa-users "></i>&nbsp;Users
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link <?php if (@$_GET['q'] == 2) echo ' active'; ?>" href="dash.php?q=2">Rankings</a>
+            <a class="nav-link <?php if (@$_GET['q'] == 2) echo ' active'; ?>" href="dash.php?q=2"><i class="fa fa-signal"></i>&nbsp;Rankings</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link <?php if (@$_GET['q'] == 3) echo ' active'; ?>" href="dash.php?q=3">Feedbacks</a>
+            <a class="nav-link <?php if (@$_GET['q'] == 3) echo ' active'; ?>" href="dash.php?q=3"><i class="fa fa-comments "></i>&nbsp;Feedbacks</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Quiz</span></a>
+            <a class="nav-link dropdown-toggle  <?php if (@$_GET['q'] == 4 || @$_GET['q'] == 5) echo ' active'; ?>" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fa fa-book"></i>&nbsp;Quiz</span></a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="dash.php?q=4">Add Quiz</a></li>
-              <li><a class="dropdown-item" href="dash.php?q=5">Remove Quiz</a></li>
+              <li><a class="dropdown-item text-success" href="dash.php?q=4"><i class="fa fa-plus-square"></i>&nbsp;Add Quiz</a></li>
+              <li><a class="dropdown-item text-danger" href="dash.php?q=5"><i class="fa fa-minus-square"></i>&nbsp;Remove Quiz</a></li>
             </ul>
 
           </li>
@@ -208,10 +207,17 @@
         //ranking start
         if (@$_GET['q'] == 2) {
           $q = mysqli_query($con, "SELECT * FROM rank  ORDER BY score DESC ") or die('Error223');
-          echo  '<div class="panel title"><div class="table-responsive">
-<table class="table table-striped title1" >
-<tr style="color:red"><td><b>Rank</b></td><td><b>Name</b></td><td><b>Gender</b></td><td><b>College</b></td><td><b>Score</b></td></tr>';
-          $c = 0;
+          echo  '<div class="panel">
+          <div class="table-responsive">
+          <table class="table table-striped table-hover title1">
+            <tr class = "table-dark">
+                <td><b>Rank</b></td>
+                <td><b>Name</b></td>
+                <td><b>Gender</b></td>
+                <td><b>College</b></td>
+                <td><b>Score</b></td>
+              </tr>';
+          $c = 1;
           while ($row = mysqli_fetch_array($q)) {
             $e = $row['email'];
             $s = $row['score'];
@@ -221,10 +227,18 @@
               $gender = $row['gender'];
               $college = $row['college'];
             }
-            $c++;
-            echo '<tr><td style="color:#99cc32"><b>' . $c . '</b></td><td>' . $name . '</td><td>' . $gender . '</td><td>' . $college . '</td><td>' . $s . '</td><td>';
+            echo '<tr class = "table-primary fw-bold">
+                    <td class = "text-primary">' . $c++ . '</td>
+                    <td>' . $name . '</td>
+                    <td>' . $gender . '</td>
+                    <td>' . $college . '</td>
+                    <td>' . $s . '</td>
+                  <tr>';
           }
-          echo '</table></div></div>';
+          echo
+          '</table>
+          </div>
+        </div>';
         }
 
         ?>
@@ -235,8 +249,18 @@
         <?php if (@$_GET['q'] == 1) {
 
           $result = mysqli_query($con, "SELECT * FROM user") or die('Error');
-          echo  '<div class="panel"><div class="table-responsive"><table class="table table-striped title1">
-<tr><td><b>S.N.</b></td><td><b>Name</b></td><td><b>Gender</b></td><td><b>College</b></td><td><b>Email</b></td><td><b>Mobile</b></td><td></td></tr>';
+          echo  '<div class="panel">
+                  <div class="table-responsive">
+                  <table class="table table-striped table-hover ">
+                    <tr class = "table-dark ">
+                      <td><b>S.N.</b></td>
+                      <td><b>Name</b></td>
+                      <td><b>Gender</b></td>
+                      <td><b>College</b></td>
+                      <td><b>Email</b></td>
+                      <td><b>Mobile</b></td>
+                      <td></td>
+                    </tr>';
           $c = 1;
           while ($row = mysqli_fetch_array($result)) {
             $name = $row['name'];
@@ -245,19 +269,42 @@
             $email = $row['email'];
             $college = $row['college'];
 
-            echo '<tr><td>' . $c++ . '</td><td>' . $name . '</td><td>' . $gender . '</td><td>' . $college . '</td><td>' . $email . '</td><td>' . $mob . '</td>
-	<td><a title="Delete User" href="update.php?demail=' . $email . '"><b><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></b></a></td></tr>';
+            echo '<tr class = "table-primary fw-bold">
+                    <td class = "fw-bolder fs-6 text-primary">' . $c++ . '</td><td>' . $name . '</td>
+                    <td>' . $gender . '</td>
+                    <td>' . $college . '</td>
+                    <td>' . $email . '</td>
+                    <td>';
+            if ($mob == 0) echo '-- NULL --';
+            else echo $mob;
+            echo '</td>
+	                  <td>
+                      <a title="Delete User" href="update.php?demail=' . $email . '"><i class="btn btn-primary quizBtn fa fa-trash-o"></i></a>
+                    </td>
+                  </tr>';
           }
           $c = 0;
           echo '</table></div></div>';
         } ?>
         <!--user end-->
 
+
         <!--feedback start-->
         <?php if (@$_GET['q'] == 3) {
           $result = mysqli_query($con, "SELECT * FROM `feedback` ORDER BY `feedback`.`date` DESC") or die('Error');
-          echo  '<div class="panel"><div class="table-responsive"><table class="table table-striped title1">
-<tr><td><b>S.N.</b></td><td><b>Subject</b></td><td><b>Email</b></td><td><b>Date</b></td><td><b>Time</b></td><td><b>By</b></td><td></td><td></td></tr>';
+          echo  '<div class="panel">
+                  <div class="table-responsive">
+                    <table class="table table-striped table-hover title1">
+                      <tr class="table-dark">
+                        <td><b>S.N.</b></td>
+                        <td><b>Subject</b></td>
+                        <td><b>Email</b></td>
+                        <td><b>Date</b></td>
+                        <td><b>Time</b></td>
+                        <td><b>By</b></td>
+                        <td></td>
+                        <td></td>
+                      </tr>';
           $c = 1;
           while ($row = mysqli_fetch_array($result)) {
             $date = $row['date'];
@@ -267,14 +314,20 @@
             $name = $row['name'];
             $email = $row['email'];
             $id = $row['id'];
-            echo '<tr><td>' . $c++ . '</td>';
-            echo '<td><a title="Click to open feedback" href="dash.php?q=3&fid=' . $id . '">' . $subject . '</a></td><td>' . $email . '</td><td>' . $date . '</td><td>' . $time . '</td><td>' . $name . '</td>
-	<td><a title="Open Feedback" href="dash.php?q=3&fid=' . $id . '"><b><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></b></a></td>';
-            echo '<td><a title="Delete Feedback" href="update.php?fdid=' . $id . '"><b><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></b></a></td>
-
-	</tr>';
+            echo '<tr class="fw-bold">
+                    <td class="text-primary">' . $c++ . '</td>
+                    <td><a title="Click to open feedback" href="dash.php?q=3&fid=' . $id . '">' . $subject . '</a></td>
+                    <td>' . $email . '</td>
+                    <td>' . $date . '</td>
+                    <td>' . $time . '</td>
+                    <td>' . $name . '</td>
+	                  <td><a title="Open Feedback" href="dash.php?q=3&fid=' . $id . '"><i class="fa fa-folder-open fa-lg"></i></a></td>
+                    <td><a title="Delete Feedback" href="update.php?fdid=' . $id . '"><i class="fa text-danger fa-trash fa-lg"></i></a></td>
+                	</tr>';
           }
-          echo '</table></div></div>';
+          echo '</table>
+              </div>
+            </div>';
         }
         ?>
         <!--feedback closed-->
@@ -292,9 +345,16 @@
             $time = $row['time'];
             $feedback = $row['feedback'];
 
-            echo '<div class="panel"<a title="Back to Archive" href="update.php?q1=2"><b><span class="glyphicon glyphicon-level-up" aria-hidden="true"></span></b></a><h2 style="text-align:center; margin-top:-15px;font-family: "Ubuntu", sans-serif;"><b>' . $subject . '</b></h1>';
-            echo '<div class="mCustomScrollbar" data-mcs-theme="dark" style="margin-left:10px;margin-right:10px; max-height:450px; line-height:35px;padding:5px;"><span style="line-height:35px;padding:5px;">-&nbsp;<b>DATE:</b>&nbsp;' . $date . '</span>
-<span style="line-height:35px;padding:5px;">&nbsp;<b>Time:</b>&nbsp;' . $time . '</span><span style="line-height:35px;padding:5px;">&nbsp;<b>By:</b>&nbsp;' . $name . '</span><br />' . $feedback . '</div></div>';
+            echo '<div class="panel" style="text-align:center;">
+                    
+                    <h4 style="text-align:center; margin-top:-15px;font-family: "Ubuntu", sans-serif;"><a title="Back to Archive" href="dash.php?q=3"><i class="btn btn-primary quizBtn fa fa-level-up"></i></a><b>&nbsp' . $subject . '</b></h4>
+                    <div class="mCustomScrollbar" data-mcs-theme="dark" style="margin-left:10px;margin-right:10px; max-height:450px; line-height:35px;padding:5px;">
+                      <span style="line-height:35px;padding:5px;">&nbsp;<b>DATE:</b>&nbsp;' . $date . '</span>
+                      <span style="line-height:35px;padding:5px;">&nbsp;<b>Time:</b>&nbsp;' . $time . '</span>
+                      <span style="line-height:35px;padding:5px;">&nbsp;<b>By:</b>&nbsp;' . $name . '</span>
+                      <br />' . $feedback . '
+                    </div>
+                  </div>';
           }
         } ?>
         <!--Feedback reading portion closed-->
@@ -465,8 +525,19 @@
         <?php if (@$_GET['q'] == 5) {
 
           $result = mysqli_query($con, "SELECT * FROM quiz ORDER BY date DESC") or die('Error');
-          echo  '<div class="panel"><div class="table-responsive"><table class="table table-striped title1">
-<tr><td><b>S.N.</b></td><td><b>Topic</b></td><td><b>Total question</b></td><td><b>Marks</b></td><td><b>Time limit</b></td><td></td></tr>';
+          echo  '<div class="panel">
+                  <div class="table-responsive">
+                    <table class="table table-hover table-striped title1" style = "font-weight:bold;">
+                      <tr class = "table-dark" >
+                        <td>S.N.</td>
+                        <td>Topic</td>
+                        <td>Total question</td>
+                        <td>Positive</td>
+                        <td>Negative</td>
+                        <td>Max. Marks</td>
+                        <td>Time limit</td>
+                        <td></td>
+                      </tr>';
           $c = 1;
           while ($row = mysqli_fetch_array($result)) {
             $title = $row['title'];
@@ -474,8 +545,17 @@
             $sahi = $row['sahi'];
             $time = $row['time'];
             $eid = $row['eid'];
-            echo '<tr><td>' . $c++ . '</td><td>' . $title . '</td><td>' . $total . '</td><td>' . $sahi * $total . '</td><td>' . $time . '&nbsp;min</td>
-	<td><b><a href="update.php?q=rmquiz&eid=' . $eid . '" class="pull-right btn sub1" style="margin:0px;background:red"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>&nbsp;<span class="title1"><b>Remove</b></span></a></b></td></tr>';
+            $neg = $row['wrong'];
+            echo '<tr> 
+            <td style="color:blue">' . $c++ . '</td>
+            <td style="color:#042391">' . $title . '</td>
+            <td>' . $total . '</td>
+            <td style="color:green">+' . $sahi . '</td>
+            <td style="color:red">-' . $neg . '</td>
+            <td style="color:green">' . $sahi * $total . '</td>
+            <td style="color:#ef3535">' . $time . '&nbsp;min</td>
+            <td> <a href="update.php?q=rmquiz&eid=' . $eid . '" class="pull-right btn btn-danger quizBtn"><i class="fa fa-trash"></i>&nbsp;Remove</a></td>
+                  </tr>';
           }
           $c = 0;
           echo '</table></div></div>';

@@ -165,7 +165,7 @@
   <!--Footer start-->
   <div class="row footer mt-auto">
     <div class="col-md-3 box">
-      <a href="http://www.projectworlds.in/online-examination" target="_blank">About us</a>
+      <a href="#" target="_blank">About us</a>
     </div>
     <div class="col-md-3 box">
       <a href="#" data-bs-toggle="modal" data-bs-target="#adminLogin">Admin Login</a>
@@ -174,7 +174,7 @@
       <a href="#" data-bs-toggle="modal" data-bs-target="#developers">Developers</a>
     </div>
     <div class="col-md-3 box">
-      <a href="feedback.php" target="_blank">Feedback</a>
+      <a href="feedback.php" class="disabled text-white" target="_blank">Feedback</a>
     </div>
   </div>
 </footer>

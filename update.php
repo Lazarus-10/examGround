@@ -35,8 +35,9 @@ function closeFullscreen() {
 
 //delete feedback
 if (isset($_SESSION['key'])) {
-  if (@$_GET['fdid'] && $_SESSION['key'] == 'saif914067') {
+  if (@$_GET['fdid'] && $_SESSION['key'] == 'saif91406714') {
     $id = @$_GET['fdid'];
+    echo $id;
     $result = mysqli_query($con, "DELETE FROM feedback WHERE id='$id' ") or die('Error');
     header("location:dash.php?q=3");
   }
@@ -44,7 +45,7 @@ if (isset($_SESSION['key'])) {
 
 //delete user
 if (isset($_SESSION['key'])) {
-  if (@$_GET['demail'] && $_SESSION['key'] == 'saif914067') {
+  if (@$_GET['demail'] && $_SESSION['key'] == 'saif91406714') {
     $demail = @$_GET['demail'];
     $r1 = mysqli_query($con, "DELETE FROM rank WHERE email='$demail' ") or die('Error');
     $r2 = mysqli_query($con, "DELETE FROM history WHERE email='$demail' ") or die('Error');
@@ -54,7 +55,7 @@ if (isset($_SESSION['key'])) {
 }
 //remove quiz
 if (isset($_SESSION['key'])) {
-  if (@$_GET['q'] == 'rmquiz' && $_SESSION['key'] == 'saif914067') {
+  if (@$_GET['q'] == 'rmquiz' && $_SESSION['key'] == 'saif91406714') {
     $eid = @$_GET['eid'];
     $result = mysqli_query($con, "SELECT * FROM questions WHERE eid='$eid' ") or die('Error');
     while ($row = mysqli_fetch_array($result)) {
@@ -72,7 +73,7 @@ if (isset($_SESSION['key'])) {
 
 //add quiz
 if (isset($_SESSION['key'])) {
-  if (@$_GET['q'] == 'addquiz' && $_SESSION['key'] == 'saif914067') {
+  if (@$_GET['q'] == 'addquiz' && $_SESSION['key'] == 'saif91406714') {
     $name = $_POST['name'];
     $name = ucwords(strtolower($name));
     $total = $_POST['total'];
@@ -90,7 +91,7 @@ if (isset($_SESSION['key'])) {
 
 //add question
 if (isset($_SESSION['key'])) {
-  if (@$_GET['q'] == 'addqns' && $_SESSION['key'] == 'saif914067') {
+  if (@$_GET['q'] == 'addqns' && $_SESSION['key'] == 'saif91406714') {
     $n = @$_GET['n'];
     $eid = @$_GET['eid'];
     $ch = @$_GET['ch'];

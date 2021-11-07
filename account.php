@@ -306,7 +306,7 @@ if (!(isset($_SESSION['email']))) {
             }
             echo
             '<div class="d-flex align-items-center pt-3 qus">
-            <div class="ms-auto"> <button class="btn btn-primary" type="submit;" onclick = "openFullscreen();">Next</button> </div>
+            <div class="ms-auto"> <button class="quizBtn btn btn-primary bg-primary text-black" style = "text-shadow:none;" type="submit;" onclick = "openFullscreen();">Next</button> </div>
                   </div>
                 </form>
               </div>';
@@ -476,7 +476,7 @@ if (!(isset($_SESSION['email']))) {
   <!------------------------------------- Footer start ------------------------------------->
   <footer class="row footer mt-auto" id="my-footer">
     <div class="col-md-3 box">
-      <a href="http://www.projectworlds.in/online-examination" target="_blank">About us</a>
+      <a href="#" target="_blank">About us</a>
     </div>
     <div class="col-md-3 box">
       <a href="#" data-bs-toggle="modal" data-bs-target="#adminLogin">Admin Login</a>

@@ -103,7 +103,7 @@ You can send us your feedback through e-mail on the following e-mail id:<br />
 <div class="row">
 <div class="col-md-1"></div>
 <div class="col-md-10">
-<a href="mailto:chiraggoel.53784@gmail.com" style="color:#000000">sunnygkp10@gmail.com</a><br /><br />
+<a href="mailto:ksarim225@gmail.com" style="color:#000000">ksarim225@gmail.com</a><br /><br />
 </div><div class="col-md-1"></div></div>
 <p>Or you can directly submit your feedback by filling the enteries below:-</p>
 <form role="form"  method="post" action="feed.php?q=feedback.php">
@@ -143,91 +143,112 @@ You can send us your feedback through e-mail on the following e-mail id:<br />
       </div>
     </div>
   </div>
-  </div>
   <!--container end-->
+  </body>
 
 
   <!--Footer start-->
-  <div class="row footer">
+  <footer>
+  <!--Footer start-->
+  <div class="row footer mt-auto">
     <div class="col-md-3 box">
-      <a href="http://www.projectworlds.in/online-examination" target="_blank">About us</a>
+      <a href="#" target="_blank">About us</a>
     </div>
     <div class="col-md-3 box">
-      <a href="#" data-toggle="modal" data-target="#login">Admin Login</a>
+      <a href="#" data-bs-toggle="modal" data-bs-target="#adminLogin">Admin Login</a>
     </div>
     <div class="col-md-3 box">
-      <a href="#" data-toggle="modal" data-target="#developers">Developers</a>
-
+      <a href="#" data-bs-toggle="modal" data-bs-target="#developers">Developers</a>
     </div>
     <div class="col-md-3 box">
-      <a href="feedback.php" target="_blank">Feedback</a>
+      <a href="feedback.php" class="disabled text-white" target="_blank">Feedback</a>
     </div>
   </div>
+</footer>
+
   <!-- Modal For Developers-->
-  <div class="modal fade title1" id="developers">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title" style="font-family:'typo' "><span style="color:orange">Developers</span></h4>
-        </div>
+<div class="modal fade title1" id="developers" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" style="font-family:'typo' "><span style="color:orange">Developers</span>
+        </h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
 
-        <div class="modal-body">
-          <p>
-          <div class="row">
-            <div class="col-md-4">
-              <img src="image/CAM00121.jpg" width=100 height=100 alt="Sunny Prakash Tiwari" class="img-rounded">
-            </div>
-            <div class="col-md-5">
-              <a href="http://yugeshverma.blogspot.in" style="color:#202020; font-family:'typo' ; font-size:18px" title="Find on Facebook">Yugesh Verma</a>
-              <h4 style="color:#202020; font-family:'typo' ;font-size:16px" class="title1">+91 9165063741</h4>
-              <h4 style="font-family:'typo' ">vermayugesh323@gmail.com</h4>
-              <h4 style="font-family:'typo' ">Chhattishgarh insitute of management & Technology ,bhilai</h4>
-            </div>
+      <div class="modal-body" style="text-align: center;">
+
+        <div class="row">
+          <div class="col-md-6 float-md-end">
+            <img src="image/pp.jpg" width=100 height=100 alt="Mohammad Saif Khan" class="img-rounded">
+            <a href="#" style="display: block; color:#202020; font-family:'typo' ; font-size:16px; color: blue; text-decoration: none;" title="Find on Facebook">Mohd. Saif Khan</a>
+            <h5 style="color:#202020; font-family:'typo'; font-size: 13px; " class="title1">+91 9140671497</h5>
+            <a style="font-family:'typo';font-size: 14px; text-decoration: none;" class="title1" href="mailto:ksarim225@gmail.com" target="_blank">ksarim225@gmail.com</a>
           </div>
-          </p>
+
+          <div class="col-md-6">
+            <img src="image/emanur.png" width=100 height=100 alt="Emanur Rahman" class="img-rounded">
+            <a href="#" style="display: block; color:#202020; font-family:'typo' ; font-size:16px; color: blue; text-decoration: none;" title="Find on Facebook">Emanur Rahman</a>
+            <h5 style="color:#202020; font-family:'typo'; font-size: 13px;" class="title1">+91 7047615466</h5>
+            <a style="font-family:'typo';font-size: 14px; text-decoration: none;" class="title1" href="mailto:ksarim225@gmail.com" target="_blank">emanur99rahman@gmail.com</a>
+
+          </div>
         </div>
 
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+        <div class="row mt-2">
+          <div class="col">
+            <a style="font-family:'typo'; display:'inline-block'; margin-bottom: 13px;" ; class="title1" href="https://www.iiests.ac.in/" target="_blank">Indian Institute of Engineering Science and
+              Technology,
+              Shibpur
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
   <!--Modal for admin login-->
-  <div class="modal fade" id="login">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title"><span style="color:orange;font-family:'typo' ">LOGIN</span></h4>
-        </div>
-        <div class="modal-body title1">
-          <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6">
-              <form role="form" method="post" action="admin.php?q=index.php">
-                <div class="form-group">
-                  <input type="text" name="uname" maxlength="20" placeholder="Admin user id" class="form-control" />
-                </div>
-                <div class="form-group">
-                  <input type="password" name="password" maxlength="15" placeholder="Password" class="form-control" />
-                </div>
-                <div class="form-group" align="center">
-                  <input type="submit" name="login" value="Login" class="btn btn-primary" />
-                </div>
-              </form>
+<div class="modal fade title1" id="adminLogin">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" style="font-family:'typo' "><span style="color:orange">Log In</span>
+        </h4>
+        <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body title1">
+        <form role="form" method="post" action="admin.php?q=index.php">
+          <fieldset>
+
+            <!-- text-input -->
+            <div class="row mb-2">
+              <div class="col-sm-10 col-md-6">
+                <input id="uName" name="uname" maxlength="20" placeholder="Admin user-id" class="form-control input" type="text" autofocus>
+              </div>
             </div>
-            <div class="col-md-3"></div>
+
+
+            <!-- Password input-->
+            <div class="row mb-2">
+              <div class="col-sm-10 col-md-6">
+                <input name="password" maxlength="15" placeholder="Password" type="password" class="form-control input">
+              </div>
+            </div>
+          </fieldset>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" name="login" class="btn btn-primary">Log In</button>
           </div>
-        </div>
-        <!--<div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>-->
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
-  <!--footer end-->
+        </form>
+      </div>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
-</body>
 
 </html>

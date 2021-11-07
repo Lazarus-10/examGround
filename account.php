@@ -17,7 +17,7 @@
   <script>
     var elem = document.documentElement;
 
-    function openFullscreen() {
+    function openFullscreen1() {
       if (elem.requestFullscreen) {
         elem.requestFullscreen();
       } else if (elem.webkitRequestFullscreen) {
@@ -29,7 +29,7 @@
       }
     }
 
-    function closeFullscreen() {
+    function closeFullscreen1() {
       if (document.fullscreenElement) {
         document.exitFullscreen();
       } else if (document.webkitExitFullscreen) {

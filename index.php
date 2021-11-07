@@ -95,7 +95,7 @@
             <!-- <label for="gender" class="col-sm-2 col-form-label"></label> -->
             <div class="col-sm-10">
               <select id="gender" name="gender" placeholder="Enter your gender" class="form-control input">
-                <option value="Male">Select Gender</option>
+                <option value="M">Select Gender</option>
                 <option value="M">Male</option>
                 <option value="F">Female</option>
               </select>

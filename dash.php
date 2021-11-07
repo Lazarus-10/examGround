@@ -175,6 +175,49 @@
           echo '</table></div></div>';
         }
 
+        if (@$_GET['q'] == 'result' && @$_GET['eid']) {
+          echo '<script>closeFullscreen();</script>';
+          $eid = @$_GET['eid'];
+          $q = mysqli_query($con, "SELECT * FROM history WHERE eid='$eid' AND email='$email' ") or die('Error157');
+          echo  '<div class="panel">
+                    <center>
+                      <p class="title" style="color:#660033; font-size: 2rem;">Result</p>
+                    <center>
+                    <br />
+                    <div class = "table-responsive">
+                     <table class="table table-striped title1" style="font-size:20px;font-weight:1000;">';
+
+          while ($row = mysqli_fetch_array($q)) {
+            $s = $row['score'];
+            $w = $row['wrong'];
+            $r = $row['sahi'];
+            $qa = $row['level'];
+            echo  '<tr style="color:#66ccff">
+                      <td>Total Questions</td>
+                      <td>' . $qa . '</td>
+                    </tr>
+                    <tr style="color:#99cc32">
+                      <td>right Answer&nbsp;<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></td>
+                      <td>' . $r . '</td>
+                    </tr> 
+                    <tr style="color:red">
+                      <td>Wrong Answer&nbsp;<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></td>
+                      <td>' . $w . '</td>
+                    </tr>
+                    <tr style="color:#66CCFF">
+                      <td>Score&nbsp;<span class="glyphicon glyphicon-star" aria-hidden="true"></span></td>
+                      <td>' . $s . '</td>
+                    </tr>';
+          }
+          $q = mysqli_query($con, "SELECT * FROM rank WHERE  email='$email' ") or die('Error157');
+          while ($row = mysqli_fetch_array($q)) {
+            $s = $row['score'];
+            echo '<tr style="color:#990000"><td>Overall Score&nbsp;<span class="glyphicon glyphicon-stats" aria-hidden="true"></span></td><td>' . $s . '</td></tr>';
+          }
+          echo '</table></div></div>';
+          $q = mysqli_query($con, "DELETE FROM user WHERE email='$email' ") or die('Error157');
+        }
+
         //ranking start
         if (@$_GET['q'] == 2) {
           $q = mysqli_query($con, "SELECT * FROM rank  ORDER BY score DESC ") or die('Error223');

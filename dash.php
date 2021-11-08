@@ -45,7 +45,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark title1" id="main-nav">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
-      <a class="navbar-brand" href="dash.php?q=0">Exam Ground</a>
+      <a class="navbar-brand text-info fw-bold fs-4" href="dash.php?q=0">Exam Ground</a>
       <form class="d-flex">
         <span class="pull-right title1" style="justify-content:center;">
           <span class="log1">

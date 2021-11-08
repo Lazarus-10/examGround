@@ -68,7 +68,7 @@ if (!(isset($_SESSION['email']))) {
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark title1" id="main-nav">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
-      <a class="navbar-brand" href="account.php?q=1">Exam Ground</a>
+      <a class="navbar-brand text-info fw-bold fs-4" href="account.php?q=1">Exam Ground</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -78,24 +78,25 @@ if (!(isset($_SESSION['email']))) {
 
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link <?php if (@$_GET['q'] == 1) echo ' active'; ?>" href="account.php?q=1">Home</a>
+            <a class="nav-link <?php if (@$_GET['q'] == 1) echo ' active'; ?>" href="account.php?q=1"><i class="fa fa-home fa-lg"></i>&nbsp;Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link <?php if (@$_GET['q'] == 2) echo ' active'; ?>" href="account.php?q=2">
-              History
+              <i class="bi bi-file-text-fill"></i></i>&nbsp;History
             </a>
 
           </li>
           <li class="nav-item">
-            <a class="nav-link <?php if (@$_GET['q'] == 3) echo ' active'; ?>" href="account.php?q=3">Ranking</a>
+            <a class="nav-link <?php if (@$_GET['q'] == 3) echo ' active'; ?>" href="account.php?q=3"><i class="bi bi-bar-chart-line-fill"></i>&nbsp;Ranking</a>
           </li>
         </ul>
         <form class="d-flex">
           <span class="pull-right title1" style="justify-content:center;">
             <span class="log1">
-              <span> Hello, </span>
-              <a class="me-2 log" href="account.php?q=1">Saif</a>
+              <span><i class="fa fa-user-o "></i>&nbsp; Hello, </span>
+              <a class="log" href="account.php?q=1">Saif</a>
             </span>
+            <span style="color: white;">|</span>
             <a href="#" data-bs-toggle="modal" data-bs-target="#signOutModal" class="log">
               Signout
             </a>
@@ -393,7 +394,7 @@ if (!(isset($_SESSION['email']))) {
               $row = mysqli_fetch_array($q23);
               $title = $row['title'];
               $c++;
-              echo '<tr class = "table-primary" style = "font-weight: bold;">
+              echo '<tr class = "fw-bold">
                         <td style = "color: blue" >' . $c . '</td>
                         <td style = "color: #042391" >' . $title . '</td>
                         <td>' . $qa . '</td>
@@ -430,7 +431,7 @@ if (!(isset($_SESSION['email']))) {
               }
               $c++;
               if ($c == 1) {
-                echo '<tr class = "table-active" style = "color:green;">
+                echo '<tr class = "table-active text-success" >
                         <td style="color:green">' . $c . '</td>
                         <td>' . $name . '';
                 if ($e == $email) {
@@ -442,7 +443,7 @@ if (!(isset($_SESSION['email']))) {
                         <td>' . $s . '</td>
                       <tr>';
               } else if ($email == $e) {
-                echo '<tr class = "table-active" style = "color:blue;">
+                echo '<tr class = "table-active text-primary">
                         <td>' . $c . '</td>
                         <td>' . $name . ' (You)</td>
                         <td>' . $gender . '</td>
@@ -476,16 +477,16 @@ if (!(isset($_SESSION['email']))) {
   <!------------------------------------- Footer start ------------------------------------->
   <footer class="row footer mt-auto" id="my-footer">
     <div class="col-md-3 box">
-      <a href="#" target="_blank">About us</a>
+      <a href="#" target="_blank"><i class="fa fa-address-card"></i>&nbsp;&nbsp;About us</a>
     </div>
     <div class="col-md-3 box">
-      <a href="#" data-bs-toggle="modal" data-bs-target="#adminLogin">Admin Login</a>
+      <a href="#" data-bs-toggle="modal" data-bs-target="#adminLogin"><i class="bi bi-shield-lock-fill"></i>&nbsp;&nbsp;Admin Login</a>
     </div>
     <div class="col-md-3 box">
-      <a href="#" data-bs-toggle="modal" data-bs-target="#developers">Developers</a>
+      <a href="#" data-bs-toggle="modal" data-bs-target="#developers"><i class="fa fa-users"></i>&nbsp;Developers</a>
     </div>
     <div class="col-md-3 box">
-      <a href="feedback.php" target="_blank">Feedback</a>
+      <a href="feedback.php" target="_blank"><i class="fa fa-comments fa-lg"></i>&nbsp;Feedback</a>
     </div>
   </footer>
   <!--footer end-->

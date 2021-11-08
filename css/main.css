@@ -116,7 +116,7 @@ body {
   min-height: 100%;
 }
 .body-with-footer {
-  min-height: calc(100vh - 91px);
+  min-height: calc(100vh - 93px);
 }
 
 .bodyClass {

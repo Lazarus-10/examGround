@@ -193,7 +193,7 @@ if (!(isset($_SESSION['email']))) {
                           <td style="color:#ef3535">' . $time . '&nbsp;min</td>
                           <td>
                             <b>
-                              <a class="pull-right btn btn-warning quizBtn" href = "account.php?q=restart&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '"  style="margin:0px; text-shadow: 2px 2px 4px #fff; "><b> <i class="fa fa-repeat"></i>&nbsp; Restart </b></span></a>
+                              <a class="pull-right btn btn-warning quizBtn" href = "account.php?q=restart&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '"  style="margin:0px; text-shadow: 2px 2px 4px #fff; "><b> <i class="fa fa-repeat"></i>&nbsp;Restart </b></span></a>
                             </b>
                           </td>
                         </tr>';

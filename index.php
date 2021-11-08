@@ -157,18 +157,16 @@
 
 <footer>
   <div class="row footer mt-auto" style="background-color: #7952B3; color:red;">
-    <div class="col-md-3 box">
+    <div class="col-md-4 box">
       <a href="#" target="_blank"><i class="fa fa-address-card"></i>&nbsp;&nbsp;About us</a>
     </div>
-    <div class="col-md-3 box">
+    <div class="col-md-4 box">
       <a href="#" data-bs-toggle="modal" data-bs-target="#adminLogin"><i class="bi bi-shield-lock-fill"></i>&nbsp;&nbsp;Admin Login</a>
     </div>
-    <div class="col-md-3 box">
+    <div class="col-md-4 box">
       <a href="#" data-bs-toggle="modal" data-bs-target="#developers"><i class="fa fa-users"></i>&nbsp;Developers</a>
     </div>
-    <div class="col-md-3 box">
-      <a href="feedback.php" target="_blank"><i class="fa fa-comments fa-lg"></i>&nbsp;&nbsp;Feedback</a>
-    </div>
+    
   </div>
 </footer>
 <!--footer end-->

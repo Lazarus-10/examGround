@@ -5,7 +5,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Exam Ground</title>
+  <title>Exam Ground | Feeback</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/font.css">
@@ -19,32 +19,41 @@
   }
   ?>
   <!--alert message end-->
-
+  <?php
+      include_once 'dbConnection.php';
+      session_start();
+      if (!(isset($_SESSION['email']))) {
+        header("location:index.php");
+      }
+      $email = $_SESSION['email'];
+      $name = $_SESSION['name'];
+      ?>
 </head>
 
 <body>
 
   <!--header start-->
-  <div class="row header">
-    <div class="col-lg-6">
-      <span class="logo">Test Your Skill</span>
-    </div>
-    <div class="col-md-2">
-    </div>
-    <div class="col-md-4">
-      <?php
-      include_once 'dbConnection.php';
-      session_start();
-      if ((!isset($_SESSION['email']))) {
-        echo '<a href="#" class="pull-right sub1 btn title3" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Signin</a>&nbsp;';
-      } else {
-        echo '<a href="logout.php?q=feedback.php" class="pull-right sub1 btn title3"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Signout</a>&nbsp;';
-      }
-      ?>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark title1" id="main-nav">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <a class="navbar-brand text-info fw-bold fs-4" href="dash.php?q=0">Exam Ground&nbsp;<i class="fa fa-book"></i></a>
+      <form class="d-flex">
+        <span class="pull-right title1" style="justify-content:center;">
+          <span class="log1">
+            <span><i class="fa fa-user-o "></i>&nbsp;&nbsp;Hello, </span>
+            <a class="me-0 log" href="dash.php?q=0"><?php echo $name; ?></a>
+          </span>
+          <span>
+            <span style="color: white;">|&nbsp;</span>
+            <a href="logout.php?q=account.php" class="log">
+              <i class="fa fa-sign-out-alt"></i>Signout&nbsp;&nbsp;<i class="fa fa-sign-out fa-lg "></i>
+            </a>
+          </span>
+        </span>
 
-      <a href="index.php" class="pull-right btn sub1 title3"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>&nbsp;Home</a>&nbsp;
-    </div>
-  </div>
+      </form>
+    </div><!-- /.container-fluid -->
+  </nav>
 
   <!--sign in modal start-->
   <div class="modal fade" id="myModal">
@@ -108,27 +117,36 @@ You can send us your feedback through e-mail on the following e-mail id:<br />
 </div><div class="col-md-1"></div></div>
 <p>Or you can directly submit your feedback by filling the enteries below:-</p>
 <form role="form"  method="post" action="feed.php?q=feedback.php">
-<div class="row">
-<div class="col-md-3"><b>Name:</b><br /><br /><br /><b>Subject:</b></div>
-<div class="col-md-9">
-<!-- Text input-->
-<div class="form-group">
-  <input id="name" name="name" placeholder="Enter your name" class="form-control input-md" type="text"><br />    
-   <input id="name" name="subject" placeholder="Enter subject" class="form-control input-md" type="text">    
 
-</div>
-</div>
-</div><!--End of row-->
+    <div class="row">
+      <div class="col-md-3"><b>Name:</b></div>
+      <div class="col-md-9">
+        <!-- Text input-->
+        <div class="form-group">
+          <input id="name" name="name" value = "' . $name . '" class="form-control input-md" type="text" disabled>
+        </div>
+      </div>
+    </div><!--End of row-->
 
-<div class="row">
-<div class="col-md-3"><b>E-Mail address:</b></div>
-<div class="col-md-9">
-<!-- Text input-->
-<div class="form-group">
-  <input id="email" name="email" placeholder="Enter your email-id" class="form-control input-md" type="email">    
- </div>
-</div>
-</div><!--End of row-->
+    <div class="row">
+      <div class="col-md-3"><b>E-Mail address:</b></div>
+      <div class="col-md-9">
+      <!-- Text input-->
+          <div class="form-group">
+            <input id="email" name="email" value="'.$email.'" class="form-control input-md" type="email" disabled>    
+          </div>
+      </div>
+    </div><!--End of row-->
+
+    <div class="row">
+      <div class="col-md-3"><b>Subject:</b></div>
+      <div class="col-md-9">
+      <!-- Text input-->
+          <div class="form-group">
+            <input id="name" name="subject" placeholder="Enter subject" class="form-control input-md" type="text">    
+          </div>
+      </div>
+    </div><!--End of row-->
 
 <div class="form-group"> 
 <textarea rows="5" cols="8" name="feedback" class="form-control" placeholder="Write feedback here..."></textarea>

@@ -67,8 +67,8 @@
   <nav class="navbar navbar-expand-lg navbar-dark title1" style="background-color: #7952B3;">
     <div class="container-fluid">
       <a class="navbar-brand  fw-bold fs-4" style="color:aqua" href="index.html">Exam Ground&nbsp;<i class="fa fa-book"></i>&nbsp;&nbsp;</a>
-      <button class="btn btn-primary fw-bold raise" type="button" data-bs-toggle="modal" data-bs-target="#signInModal">Sign
-        In</button>
+      <button class="btn btn-primary fw-bold raise" type="button" data-bs-toggle="modal" data-bs-target="#signInModal"><i class="fa fa-sign-out fa-lg "></i>&nbsp;Sign
+        in</button>
     </div>
   </nav>
   <!--header closed-->

@@ -94,7 +94,7 @@ if (!(isset($_SESSION['email']))) {
           <span class="pull-right title1" style="justify-content:center;">
             <span class="log1">
               <span><i class="fa fa-user-o "></i>&nbsp; Hello, </span>
-              <a class="log" href="account.php?q=1">Saif</a>
+              <a class="log" href="account.php?q=1"><?php echo $name; ?></a>
             </span>
             <span style="color: white;">|</span>
             <a href="#" data-bs-toggle="modal" data-bs-target="#signOutModal" class="log">
@@ -185,7 +185,7 @@ if (!(isset($_SESSION['email']))) {
               } else {
                 echo  '<tr>
                           <td style="color:blue">' . $c++ . '</td>
-                          <td style="color:#042391">' . $title . '&nbsp;<span title="This quiz is already solve by you" class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+                          <td class="text-success">' . $title . '&nbsp;<i class="fa fa-check fa-lg"></i></td>
                           <td>' . $total . '</td>
                           <td style="color:green">+' . $sahi . '</td>
                           <td style="color:red">-' . $neg . '</td>
@@ -307,7 +307,7 @@ if (!(isset($_SESSION['email']))) {
             }
             echo
             '<div class="d-flex align-items-center pt-3 qus">
-            <div class="ms-auto"> <button class="quizBtn btn btn-primary bg-primary text-black" style = "text-shadow:none;" type="submit;" onclick = "openFullscreen();">Next</button> </div>
+            <div class="ms-auto"> <button class="quizBtn btn btn-primary bg-primary text-black" style = "text-shadow:none;" type="submit;" onclick = "openFullscreen();">Submit</button> </div>
                   </div>
                 </form>
               </div>';

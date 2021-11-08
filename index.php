@@ -11,8 +11,9 @@
   <link rel="stylesheet" href="css/font.css">
 
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-  <script src="https://kit.fontawesome.com/be42f3d5b4.js" crossorigin="anonymous"></script>
+  <script src="https://use.fontawesome.com/dd653cca0e.js"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 
   <script src="js/jquery.js" type="text/javascript"></script>
@@ -63,15 +64,13 @@
 </head>
 
 <body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">Exam Ground</a>
-        <button class="btn btn-primary raise" type="button" data-bs-toggle="modal" data-bs-target="#signInModal">Sign
-          In</button>
-      </div>
-    </nav>
-  </header>
+  <nav class="navbar navbar-expand-lg navbar-dark title1" style="background-color: #7952B3;">
+    <div class="container-fluid">
+      <a class="navbar-brand  fw-bold fs-4" style="color:aqua" href="index.html">Exam Ground&nbsp;<i class="fa fa-book"></i>&nbsp;&nbsp;</a>
+      <button class="btn btn-primary fw-bold raise" type="button" data-bs-toggle="modal" data-bs-target="#signInModal">Sign
+        In</button>
+    </div>
+  </nav>
   <!--header closed-->
 
 
@@ -84,7 +83,6 @@
         <fieldset>
           <!-- Text input(name)-->
           <div class="row mb-3" style="justify-content : center">
-            <!-- <label for="name" class="col-sm-2 col-form-label"><span><i class="fa fa-user icon"></i></span></label> -->
             <div class="col-sm-10">
               <input id="name" name="name" placeholder="Enter your name" type="text" class="form-control input" autofocus>
             </div>
@@ -92,7 +90,6 @@
 
           <!-- Selection input(Gender)-->
           <div class="row mb-3" style="justify-content : center">
-            <!-- <label for="gender" class="col-sm-2 col-form-label"></label> -->
             <div class="col-sm-10">
               <select id="gender" name="gender" placeholder="Enter your gender" class="form-control input">
                 <option value="M">Select Gender</option>
@@ -104,7 +101,6 @@
 
           <!-- Text input(College)-->
           <div class="row mb-3" style="justify-content : center">
-            <!-- <label for="college" class="col-sm-2 col-form-label"></label> -->
             <div class="col-sm-10">
               <input id="college" name="college" placeholder="Enter your college name" type="text" class="form-control input">
             </div>
@@ -112,7 +108,6 @@
 
           <!-- Text input(Email)-->
           <div class="row mb-3" style="justify-content : center">
-            <!-- <label for="email" class="col-sm-2 col-form-label"></label> -->
             <div class="col-sm-10">
               <input id="email" name="email" placeholder="Enter your email-id" type="email" class="form-control input">
             </div>
@@ -120,7 +115,6 @@
 
           <!-- Number input(phone)-->
           <div class="row mb-3" style="justify-content : center">
-            <!-- <label for="mob" class="col-sm-2 col-form-label"></label> -->
             <div class="col-sm-10">
               <input id="mob" name="mob" placeholder="Enter your Mobile number" type="number" class="form-control input">
             </div>
@@ -128,7 +122,6 @@
 
           <!-- Text input(Password)-->
           <div class="row mb-3" style="justify-content : center">
-            <!-- <label for="password" class="col-sm-2 col-form-label"></label> -->
             <div class="col-sm-10">
               <input id="password" name="password" placeholder="Enter your Password" type="password" class="form-control input">
             </div>
@@ -136,7 +129,6 @@
 
           <!-- Text input(confirm Password)-->
           <div class="row mb-3" style="justify-content : center">
-            <!-- <label for="cpassword" class="col-sm-2 col-form-label"></label> -->
             <div class="col-sm-10">
               <input id="cpassword" name="cpassword" placeholder="Confirm Password" type="password" class="form-control input">
             </div>
@@ -161,20 +153,21 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
+<!--Footer start-->
+
 <footer>
-  <!--Footer start-->
-  <div class="row footer mt-auto">
+  <div class="row footer mt-auto" style="background-color: #7952B3; color:red;">
     <div class="col-md-3 box">
-      <a href="#" target="_blank">About us</a>
+      <a href="#" target="_blank"><i class="fa fa-address-card"></i>&nbsp;&nbsp;About us</a>
     </div>
     <div class="col-md-3 box">
-      <a href="#" data-bs-toggle="modal" data-bs-target="#adminLogin">Admin Login</a>
+      <a href="#" data-bs-toggle="modal" data-bs-target="#adminLogin"><i class="bi bi-shield-lock-fill"></i>&nbsp;&nbsp;Admin Login</a>
     </div>
     <div class="col-md-3 box">
-      <a href="#" data-bs-toggle="modal" data-bs-target="#developers">Developers</a>
+      <a href="#" data-bs-toggle="modal" data-bs-target="#developers"><i class="fa fa-users"></i>&nbsp;Developers</a>
     </div>
     <div class="col-md-3 box">
-      <a href="feedback.php" class="disabled text-white" target="_blank">Feedback</a>
+      <a href="feedback.php" target="_blank"><i class="fa fa-comments fa-lg"></i>&nbsp;&nbsp;Feedback</a>
     </div>
   </div>
 </footer>

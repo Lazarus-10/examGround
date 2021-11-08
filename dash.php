@@ -45,17 +45,17 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark title1" id="main-nav">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
-      <a class="navbar-brand text-info fw-bold fs-4" href="dash.php?q=0">Exam Ground</a>
+      <a class="navbar-brand text-info fw-bold fs-4" href="dash.php?q=0">Exam Ground&nbsp;<i class="fa fa-book"></i></a>
       <form class="d-flex">
         <span class="pull-right title1" style="justify-content:center;">
           <span class="log1">
-            <span> Hello, </span>
+            <span><i class="fa fa-user-o "></i>&nbsp;&nbsp;Hello, </span>
             <a class="me-0 log" href="dash.php?q=0"><?php echo $name; ?></a>
           </span>
           <span>
             <span style="color: white;">|&nbsp;</span>
             <a href="logout.php?q=account.php" class="log">
-              <i class="fa fa-sign-out-alt"></i>Signout
+              <i class="fa fa-sign-out-alt"></i>Signout&nbsp;&nbsp;<i class="fa fa-sign-out fa-lg "></i>
             </a>
           </span>
         </span>

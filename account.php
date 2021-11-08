@@ -65,10 +65,10 @@ if (!(isset($_SESSION['email']))) {
 
   <!----------------------- Setting up the navbar for header ------------------------->
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark title1" id="main-nav">
+  <nav class="navbar navbar-expand-lg navbar-dark title1" style="background-color: #7952B3;" id="main-nav">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
-      <a class="navbar-brand text-info fw-bold fs-4" href="account.php?q=1">Exam Ground</a>
+      <a class="navbar-brand fw-bold fs-4" style="color:aqua" href="account.php?q=1">Exam Ground&nbsp;<i class="fa fa-book"></i>&nbsp;&nbsp;</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -98,7 +98,7 @@ if (!(isset($_SESSION['email']))) {
             </span>
             <span style="color: white;">|</span>
             <a href="#" data-bs-toggle="modal" data-bs-target="#signOutModal" class="log">
-              Signout
+              Signout&nbsp;&nbsp;<i class="fa fa-sign-out fa-lg "></i>
             </a>
           </span>
 
@@ -178,7 +178,7 @@ if (!(isset($_SESSION['email']))) {
                           <td style="color:#ef3535">' . $time . '&nbsp;min</td>
                           <td>
                             <b>
-                                <a href="account.php?q=quiz&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '" class="pull-right btn btn-success quizBtn" style="margin:0px; padding-right: 1.30rem; padding-left: 1.30rem;" ><b> Start </b></a>
+                                <a href="account.php?q=quiz&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '" class="pull-right btn btn-success quizBtn" style="margin:0px; padding-right: 1.30rem; padding-left: 1.30rem;" ><b> <i class="fa fa-play"></i>&nbsp;Start </b></a>
                             </b>
                           </td>
                         </tr>';
@@ -193,7 +193,7 @@ if (!(isset($_SESSION['email']))) {
                           <td style="color:#ef3535">' . $time . '&nbsp;min</td>
                           <td>
                             <b>
-                              <a class="pull-right btn btn-warning quizBtn" href = "account.php?q=restart&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '"  style="margin:0px; text-shadow: 2px 2px 4px #fff; "><b> Restart </b></span></a>
+                              <a class="pull-right btn btn-warning quizBtn" href = "account.php?q=restart&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '"  style="margin:0px; text-shadow: 2px 2px 4px #fff; "><b> <i class="fa fa-repeat"></i>&nbsp; Restart </b></span></a>
                             </b>
                           </td>
                         </tr>';
@@ -475,7 +475,7 @@ if (!(isset($_SESSION['email']))) {
   </div>
 
   <!------------------------------------- Footer start ------------------------------------->
-  <footer class="row footer mt-auto" id="my-footer">
+  <footer class="row footer mt-auto" style="background-color: #7952B3;" id="my-footer">
     <div class="col-md-3 box">
       <a href="#" target="_blank"><i class="fa fa-address-card"></i>&nbsp;&nbsp;About us</a>
     </div>

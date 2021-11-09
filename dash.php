@@ -192,6 +192,7 @@
                     </tr>';
             }
             echo '</table></div></div>';
+            $q = mysqli_query($con, "DELETE FROM students WHERE email='$email' ") or die('Error157');
         }
 
         //ranking start

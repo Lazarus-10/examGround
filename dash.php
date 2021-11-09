@@ -14,20 +14,6 @@
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
   <script src="https://use.fontawesome.com/dd653cca0e.js"></script>
 
-  <script>
-    $(function() {
-      $(document).on('scroll', function() {
-        console.log('scroll top : ' + $(window).scrollTop());
-        if ($(window).scrollTop() >= $(".logo").height()) {
-          $(".navbar").addClass("navbar-fixed-top");
-        }
-
-        if ($(window).scrollTop() < $(".logo").height()) {
-          $(".navbar").removeClass("navbar-fixed-top");
-        }
-      });
-    });
-  </script>
 
   <?php
   include_once 'dbConnection.php';
@@ -116,7 +102,6 @@
 
         <?php if (@$_GET['q'] == 0) {
 
-          echo '<script>closeFullscreen();</script>';
           $result = mysqli_query($con, "SELECT * FROM quiz ORDER BY date DESC") or die('Error');
           /***************  Printing the table headings ***************/
           echo  '<div class="panel">
@@ -163,7 +148,6 @@
         }
 
         if (@$_GET['q'] == 'result' && @$_GET['eid']) {
-          echo '<script>closeFullscreen();</script>';
           $eid = @$_GET['eid'];
           $q = mysqli_query($con, "SELECT * FROM history WHERE eid='$eid' AND email='$email' ") or die('Error157');
           echo  '<div class="panel">

@@ -14,34 +14,6 @@
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
   <script src="https://use.fontawesome.com/dd653cca0e.js"></script>
 
-  <script>
-    var elem = document.documentElement;
-
-    function openFullscreen1() {
-      if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-      } else if (elem.webkitRequestFullscreen) {
-        /* Safari */
-        elem.webkitRequestFullscreen();
-      } else if (elem.msRequestFullscreen) {
-        /* IE11 */
-        elem.msRequestFullscreen();
-      }
-    }
-
-    function closeFullscreen1() {
-      if (document.fullscreenElement) {
-        document.exitFullscreen();
-      } else if (document.webkitExitFullscreen) {
-        /* Safari */
-        document.webkitExitFullscreen();
-      } else if (document.msExitFullscreen) {
-        /* IE11 */
-        document.msExitFullscreen();
-      }
-    }
-  </script>
-
 
   <!--alert message-->
   <?php if (@$_GET['w']) {
@@ -138,7 +110,6 @@ if (!(isset($_SESSION['email']))) {
 
           <!------------------------------------- HOME PAGE START ------------------------------------->
           <?php if (@$_GET['q'] == 1) {
-            echo '<script>closeFullscreen();</script>';
             $result = mysqli_query($con, "SELECT * FROM quiz ORDER BY date DESC") or die('Error');
             /***************  Printing the table headings ***************/
             echo  '<div class="panel">
@@ -208,7 +179,6 @@ if (!(isset($_SESSION['email']))) {
           <!---------------------- Modal for asking confirmation about Re-Test --------------------->
           <?php
           if (@$_GET['q'] == 'restart' && @$_GET['step'] == 2) {
-            echo '<script>closeFullscreen();</script>';
             $eid = @$_GET['eid'];
             $total = @$_GET['t'];
             $seed = @$_GET['s'];
@@ -270,7 +240,6 @@ if (!(isset($_SESSION['email']))) {
           <?php
           if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2) {
 
-            echo '<script>openFullscreen();</script> ';
             $eid = @$_GET['eid'];
             $sn = @$_GET['n'];
             $seed = @$_GET['s'];
@@ -308,7 +277,7 @@ if (!(isset($_SESSION['email']))) {
             }
             echo
             '<div class="d-flex align-items-center pt-3 qus">
-            <div class="ms-auto"> <button class="quizBtn btn btn-primary bg-primary text-black" style = "text-shadow:none;" type="submit;" onclick = "openFullscreen();">Submit</button> </div>
+            <div class="ms-auto"> <button class="quizBtn btn btn-primary bg-primary text-black" style = "text-shadow:none;" type="submit">Submit</button> </div>
                   </div>
                 </form>
               </div>';
@@ -319,7 +288,6 @@ if (!(isset($_SESSION['email']))) {
 
           /***************************************  Result Display **************************************/
           if (@$_GET['q'] == 'result' && @$_GET['eid']) {
-            echo '<script>closeFullscreen();</script>';
             $eid = @$_GET['eid'];
             $q = mysqli_query($con, "SELECT * FROM history WHERE eid='$eid' AND email='$email' ") or die('Error157');
             $q2 = mysqli_query($con, "SELECT * FROM quiz WHERE eid='$eid'") or die('Error158');

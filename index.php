@@ -16,7 +16,6 @@
   <script src="https://use.fontawesome.com/dd653cca0e.js"></script>
   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
 
-  <script src="js/jquery.js" type="text/javascript"></script>
   <?php if (@$_GET['w']) {
     echo '<script>alert("' . @$_GET['w'] . '");</script>';
   }
@@ -27,19 +26,15 @@
   <script>
     function validateForm() {
       var y = document.forms["form"]["name"].value;
-      var letters = /^[A-Za-z]+$/;
       if (y == null || y == "") {
+        alert("Name must be filled out.");
         return false;
       }
-      var z = document.forms["form"]["college"].value;
-      if (z == null || z == "") {
-        alert("college must be filled out.");
-        return false;
-      }
+     
       var x = document.forms["form"]["email"].value;
       var atpos = x.indexOf("@students.iiests.ac.in");
       if (atpos == -1) {
-        alert("Invalid College E-Mail ID");
+        alert("Not a valid college e-mail.");
         return false;
       }
       var a = document.forms["form"]["password"].value;

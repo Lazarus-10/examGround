@@ -43,13 +43,13 @@ if (isset($_SESSION['key'])) {
   }
 }
 
-//delete user
+//delete student
 if (isset($_SESSION['key'])) {
   if (@$_GET['demail'] && $_SESSION['key'] == 'saif91406714') {
     $demail = @$_GET['demail'];
     $r1 = mysqli_query($con, "DELETE FROM rank WHERE email='$demail' ") or die('Error');
     $r2 = mysqli_query($con, "DELETE FROM history WHERE email='$demail' ") or die('Error');
-    $result = mysqli_query($con, "DELETE FROM user WHERE email='$demail' ") or die('Error');
+    $result = mysqli_query($con, "DELETE FROM students WHERE email='$demail' ") or die('Error');
     header("location:dash.php?q=1");
   }
 }
@@ -161,7 +161,7 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2) {
   //Reset the history for that quiz
   if ($sn == 1) {
     if ($_SESSION['key'] == 'saif91406714') {
-      $q = mysqli_query($con, "INSERT INTO user (`name`, `email`) VALUES ('Admin', '$email')"); // we have to first add the user, as the history table is referencing from user table
+      $q = mysqli_query($con, "INSERT INTO students (`name`, `email`) VALUES ('Admin', '$email')"); // we have to first add the student, as the history table is referencing from students table
     }
     $q = mysqli_query($con, "SELECT * FROM history WHERE eid='$eid' AND email='$email' ") or die('Error139');
     $rowcount = mysqli_num_rows($q);
@@ -195,7 +195,7 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2) {
     }
     $q = mysqli_query($con, "SELECT * FROM rank WHERE email='$email'") or die('Error161');
     $rowcount = mysqli_num_rows($q);
-    //if the user is giving exam for the first time
+    //if the student is giving exam for the first time
     if ($rowcount == 0) {
       $q2 = mysqli_query($con, "INSERT INTO rank VALUES('$email','$s',NOW())") or die('Error165');
     } else { // if he had score for some previous exam

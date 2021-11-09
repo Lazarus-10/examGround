@@ -37,10 +37,9 @@
         return false;
       }
       var x = document.forms["form"]["email"].value;
-      var atpos = x.indexOf("@");
-      var dotpos = x.lastIndexOf(".");
-      if (atpos < 1 || dotpos < atpos + 2 || dotpos + 2 >= x.length) {
-        alert("Not a valid e-mail address.");
+      var atpos = x.indexOf("@students.iiests.ac.in");
+      if (atpos == -1) {
+        alert("Invalid College E-Mail ID");
         return false;
       }
       var a = document.forms["form"]["password"].value;
@@ -63,10 +62,10 @@
 
 </head>
 
-<body>
+<body class="bodyClass">
   <nav class="navbar navbar-expand-lg navbar-dark title1" style="background-color: #7952B3;">
     <div class="container-fluid">
-      <a class="navbar-brand  fw-bold fs-4" style="color:aqua" href="index.html">Exam Ground&nbsp;<i class="fa fa-book"></i>&nbsp;&nbsp;</a>
+      <a class="navbar-brand  fw-bold fs-4" style="color:aqua" href="index.php">Exam Ground&nbsp;<i class="fa fa-book"></i>&nbsp;&nbsp;</a>
       <button class="btn btn-primary fw-bold raise" type="button" data-bs-toggle="modal" data-bs-target="#signInModal"><i class="fa fa-sign-out fa-lg "></i>&nbsp;Sign
         in</button>
     </div>
@@ -79,12 +78,18 @@
   <div id="mybg-div" class="bodyClass">
 
     <div class="col-md-4 float-md-end panel ">
-      <form class="form-horizontal" name="form" action="sign.php?q=account.php" onSubmit="return validateForm()" method="POST">
+      <form class="form-horizontal" style="font-size: 0;" name="form" action="sign.php?q=account.php" onSubmit="return validateForm()" method="POST">
         <fieldset>
           <!-- Text input(name)-->
           <div class="row mb-3" style="justify-content : center">
             <div class="col-sm-10">
               <input id="name" name="name" placeholder="Enter your name" type="text" class="form-control input" autofocus>
+            </div>
+          </div>
+          <!-- Text input(name)-->
+          <div class="row mb-3" style="justify-content : center">
+            <div class="col-sm-10">
+              <input id="roll" name="roll" placeholder="Enrollment Number" type="text" class="form-control input" required>
             </div>
           </div>
 
@@ -99,17 +104,10 @@
             </div>
           </div>
 
-          <!-- Text input(College)-->
-          <div class="row mb-3" style="justify-content : center">
-            <div class="col-sm-10">
-              <input id="college" name="college" placeholder="Enter your college name" type="text" class="form-control input">
-            </div>
-          </div>
-
           <!-- Text input(Email)-->
           <div class="row mb-3" style="justify-content : center">
             <div class="col-sm-10">
-              <input id="email" name="email" placeholder="Enter your email-id" type="email" class="form-control input">
+              <input id="email" name="email" maxlength="50" placeholder="example@students.iiests.ac.in" type="email" class="form-control input">
             </div>
           </div>
 
@@ -133,10 +131,10 @@
               <input id="cpassword" name="cpassword" placeholder="Confirm Password" type="password" class="form-control input">
             </div>
           </div>
+
+
+          <button type="submit" class="sub btn btn-primary">Sign Up</button>
         </fieldset>
-
-
-        <button type="submit" class="sub btn btn-primary">Sign Up</button>
       </form>
 
       <?php if (@$_GET['q7']) {
@@ -166,7 +164,7 @@
     <div class="col-md-4 box">
       <a href="#" data-bs-toggle="modal" data-bs-target="#developers"><i class="fa fa-users"></i>&nbsp;Developers</a>
     </div>
-    
+
   </div>
 </footer>
 <!--footer end-->
@@ -181,12 +179,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body title1">
-        <form role="form" class="form-horizontal" action="login.php?q=index.php" method="POST">
+        <form role="form" class="form-horizontal" action="login.php" method="POST">
           <fieldset>
             <!-- Text input -->
             <div class="row mb-2">
               <div class="col-sm-10 col-md-6">
-                <input id="logIN" name="email" maxlength="20" placeholder="Enter your email-id" class="form-control input" type="email" autofocus>
+                <input id="logIN" name="email" maxlength="50" placeholder="example@students.iiests.ac.in" class="form-control input" type="email" autofocus>
               </div>
             </div>
 

@@ -59,6 +59,7 @@ if (!(isset($_SESSION['email']))) {
 } else {
   $name = $_SESSION['name'];
   $email = $_SESSION['email'];
+  $college = 'IIEST';
 } ?>
 
 <body class="bodyClass" style="background: url(image/bg5.jpg);">
@@ -94,7 +95,7 @@ if (!(isset($_SESSION['email']))) {
           <span class="pull-right title1" style="justify-content:center;">
             <span class="log1">
               <span><i class="fa fa-user-o "></i>&nbsp; Hello, </span>
-              <a class="log" href="account.php?q=1"><?php echo $name; ?></a>
+              <a class="log" href="account.php?q=1"><?php echo explode(' ', trim($name))[0]; ?></a>
             </span>
             <span style="color: white;">|</span>
             <a href="#" data-bs-toggle="modal" data-bs-target="#signOutModal" class="log">
@@ -163,14 +164,14 @@ if (!(isset($_SESSION['email']))) {
               $neg = $row['wrong'];
               $seed = FLOOR(RAND() * 100);
 
-              //fetch the exams already given by user
+              //fetch the exams already given by student
               $q12 = mysqli_query($con, "SELECT score FROM history WHERE eid='$eid' AND email='$email'") or die('Error98');
               $rowcount = mysqli_num_rows($q12);
               /***************  Printing the exams information ***************/
-              if ($rowcount == 0) {  //if the user haven't given the exam previously
+              if ($rowcount == 0) {  //if the student haven't given the exam previously
                 echo  '<tr> 
                           <td style="color:blue">' . $c++ . '</td>
-                          <td style="color:#042391">' . $title . '</td>
+                          <td style="color:#042391 ">' . $title . '</td>
                           <td>' . $total . '</td>
                           <td style="color:green">+' . $sahi . '</td>
                           <td style="color:red">-' . $neg . '</td>
@@ -321,40 +322,46 @@ if (!(isset($_SESSION['email']))) {
             echo '<script>closeFullscreen();</script>';
             $eid = @$_GET['eid'];
             $q = mysqli_query($con, "SELECT * FROM history WHERE eid='$eid' AND email='$email' ") or die('Error157');
+            $q2 = mysqli_query($con, "SELECT * FROM quiz WHERE eid='$eid'") or die('Error158');
+            while ($row = mysqli_fetch_array($q2)) {
+              $perCorrect = $row['sahi'];
+              $perWrong = $row['wrong'];
+            }
             echo  '<div class="panel">
-                    <center>
-                      <p class="title" style="color:#660033; font-size: 2rem;">Result</p>
-                    <center>
+                      <p class="title fs-1" style="color:#660033;">Result</p>
                     <br />
                     <div class = "table-responsive">
-                     <table class="table table-striped title1" style="font-size:20px;font-weight:1000;">';
+                     <table class="table table-hover title1 fs-5 fw-bold">';
 
             while ($row = mysqli_fetch_array($q)) {
               $s = $row['score'];
               $w = $row['wrong'];
               $r = $row['sahi'];
               $qa = $row['level'];
-              echo  '<tr style="color:#66ccff">
-                      <td>Total Questions</td>
+              echo  '<tr class="table-primary">
+                      <td class="text-start">Total Questions</td>
                       <td>' . $qa . '</td>
                     </tr>
-                    <tr style="color:#99cc32">
-                      <td>right Answer&nbsp;<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></td>
-                      <td>' . $r . '</td>
+                    <tr class="text-success table-primary">
+                      <td class="text-start">Right Answers&nbsp;<i class="fa fa-check-circle"></i></td>
+                      <td>' . $r . '&nbsp;(+' . $perCorrect * $r . ')</td>
                     </tr> 
-                    <tr style="color:red">
-                      <td>Wrong Answer&nbsp;<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></td>
-                      <td>' . $w . '</td>
+                    <tr class="text-danger table-primary">
+                      <td class="text-start">Wrong Answers&nbsp;<i class="fa fa-times-circle"></i></td>
+                      <td>' . $w . '&nbsp;(-' . $perWrong * $w . ')</td>
                     </tr>
-                    <tr style="color:#66CCFF">
-                      <td>Score&nbsp;<span class="glyphicon glyphicon-star" aria-hidden="true"></span></td>
+                    <tr class="text-primary table-primary">
+                      <td class="text-start">Score&nbsp;<i class="fa fa-star"></i></td>
                       <td>' . $s . '</td>
                     </tr>';
             }
             $q = mysqli_query($con, "SELECT * FROM rank WHERE  email='$email' ") or die('Error157');
             while ($row = mysqli_fetch_array($q)) {
               $s = $row['score'];
-              echo '<tr style="color:#990000"><td>Overall Score&nbsp;<span class="glyphicon glyphicon-stats" aria-hidden="true"></span></td><td>' . $s . '</td></tr>';
+              echo '<tr class="text-success table-info">
+                      <td class="text-start">Overall Score&nbsp;<i class="fa fa-signal"></i></td>
+                      <td>' . $s . '</td>
+                    </tr>';
             }
             echo '</table></div></div>';
           }
@@ -374,7 +381,7 @@ if (!(isset($_SESSION['email']))) {
             $q = mysqli_query($con, "SELECT * FROM history WHERE email='$email' ORDER BY date DESC ") or die('Error197');
             echo  '<div class="panel title">
                      <div class="table-responsive">
-                      <table class="table table-striped title1" >
+                      <table class="table table-hover table-striped title1" >
                         <tr class = "table-dark">
                           <td><b>S.N.</b></td>
                           <td><b>Quiz</b></td>
@@ -423,11 +430,10 @@ if (!(isset($_SESSION['email']))) {
             while ($row = mysqli_fetch_array($q)) {
               $e = $row['email'];
               $s = $row['score'];
-              $q12 = mysqli_query($con, "SELECT * FROM user WHERE email='$e' ") or die('Error231');
+              $q12 = mysqli_query($con, "SELECT * FROM students WHERE email='$e' ") or die('Error231');
               while ($row = mysqli_fetch_array($q12)) {
                 $name = $row['name'];
                 $gender = $row['gender'];
-                $college = $row['college'];
               }
               $c++;
               if ($c == 1) {

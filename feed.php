@@ -5,6 +5,8 @@
     $email = $_POST['email'];
     $subject = $_POST['subject'];
     $id=uniqid();
+    
+    date_default_timezone_set('Asia/Kolkata'); 
     $date=date("Y-m-d");
     $time=date("h:i:sa");
     $feedback = $_POST['feedback'];

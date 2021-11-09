@@ -20,14 +20,14 @@
   ?>
   <!--alert message end-->
   <?php
-      include_once 'dbConnection.php';
-      session_start();
-      if (!(isset($_SESSION['email']))) {
-        header("location:index.php");
-      }
-      $email = $_SESSION['email'];
-      $name = $_SESSION['name'];
-      ?>
+  include_once 'dbConnection.php';
+  session_start();
+  if (!(isset($_SESSION['email']))) {
+    header("location:index.php");
+  }
+  $email = $_SESSION['email'];
+  $name = $_SESSION['name'];
+  ?>
 </head>
 
 <body>
@@ -123,7 +123,7 @@ You can send us your feedback through e-mail on the following e-mail id:<br />
       <div class="col-md-9">
         <!-- Text input-->
         <div class="form-group">
-          <input id="name" name="name" value = "' . $name . '" class="form-control input-md" type="text" disabled>
+          <input id="name" name="name" value = "' . $name . '" class="form-control input-md" type="text" readonly>
         </div>
       </div>
     </div><!--End of row-->
@@ -133,7 +133,7 @@ You can send us your feedback through e-mail on the following e-mail id:<br />
       <div class="col-md-9">
       <!-- Text input-->
           <div class="form-group">
-            <input id="email" name="email" value="'.$email.'" class="form-control input-md" type="email" disabled>    
+            <input id="email" name="email" value="' . $email . '" class="form-control input-md" type="email" readonly>    
           </div>
       </div>
     </div><!--End of row-->
@@ -163,11 +163,11 @@ You can send us your feedback through e-mail on the following e-mail id:<br />
     </div>
   </div>
   <!--container end-->
-  </body>
+</body>
 
 
-  <!--Footer start-->
-  <footer>
+<!--Footer start-->
+<footer>
   <!--Footer start-->
   <div class="row footer mt-auto">
     <div class="col-md-3 box">
@@ -185,7 +185,7 @@ You can send us your feedback through e-mail on the following e-mail id:<br />
   </div>
 </footer>
 
-  <!-- Modal For Developers-->
+<!-- Modal For Developers-->
 <div class="modal fade title1" id="developers" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -229,7 +229,7 @@ You can send us your feedback through e-mail on the following e-mail id:<br />
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
-  <!--Modal for admin login-->
+<!--Modal for admin login-->
 <div class="modal fade title1" id="adminLogin">
   <div class="modal-dialog">
     <div class="modal-content">

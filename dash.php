@@ -33,6 +33,7 @@
   include_once 'dbConnection.php';
   session_start();
   $email = $_SESSION['email'];
+  $college = 'IIEST';
   if (!(isset($_SESSION['email']))) {
     header("location:index.php");
   } else {
@@ -79,7 +80,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link <?php if (@$_GET['q'] == 1) echo ' active'; ?>" href="dash.php?q=1">
-              <i class="fa fa-users "></i>&nbsp;Users
+              <i class="fa fa-users "></i>&nbsp;Students
             </a>
           </li>
           <li class="nav-item">
@@ -201,7 +202,7 @@
             echo '<tr style="color:#990000"><td>Overall Score&nbsp;<span class="glyphicon glyphicon-stats" aria-hidden="true"></span></td><td>' . $s . '</td></tr>';
           }
           echo '</table></div></div>';
-          $q = mysqli_query($con, "DELETE FROM user WHERE email='$email' ") or die('Error157');
+          $q = mysqli_query($con, "DELETE FROM students WHERE email='$email' ") or die('Error157');
         }
 
         //ranking start
@@ -221,11 +222,10 @@
           while ($row = mysqli_fetch_array($q)) {
             $e = $row['email'];
             $s = $row['score'];
-            $q12 = mysqli_query($con, "SELECT * FROM user WHERE email='$e' ") or die('Error231');
+            $q12 = mysqli_query($con, "SELECT * FROM students WHERE email='$e' ") or die('Error231');
             while ($row = mysqli_fetch_array($q12)) {
               $name = $row['name'];
               $gender = $row['gender'];
-              $college = $row['college'];
             }
             echo '<tr class = "table-primary fw-bold">
                     <td class = "text-primary">' . $c++ . '</td>
@@ -245,10 +245,10 @@
 
 
         <!--home closed-->
-        <!--users start-->
+        <!--students start-->
         <?php if (@$_GET['q'] == 1) {
 
-          $result = mysqli_query($con, "SELECT * FROM user") or die('Error');
+          $result = mysqli_query($con, "SELECT * FROM students") or die('Error');
           echo  '<div class="panel">
                   <div class="table-responsive">
                   <table class="table table-striped table-hover ">
@@ -267,7 +267,6 @@
             $mob = $row['mob'];
             $gender = $row['gender'];
             $email = $row['email'];
-            $college = $row['college'];
 
             echo '<tr class = "table-primary fw-bold">
                     <td class = "fw-bolder fs-6 text-primary">' . $c++ . '</td><td>' . $name . '</td>
@@ -279,14 +278,14 @@
             else echo $mob;
             echo '</td>
 	                  <td>
-                      <a title="Delete User" href="update.php?demail=' . $email . '"><i class="btn btn-primary quizBtn fa fa-trash-o"></i></a>
+                      <a title="Delete Student" href="update.php?demail=' . $email . '"><i class="btn btn-primary quizBtn fa fa-trash-o"></i></a>
                     </td>
                   </tr>';
           }
           $c = 0;
           echo '</table></div></div>';
         } ?>
-        <!--user end-->
+        <!--students end-->
 
 
         <!--feedback start-->

@@ -149,44 +149,49 @@
 
         if (@$_GET['q'] == 'result' && @$_GET['eid']) {
           $eid = @$_GET['eid'];
-          $q = mysqli_query($con, "SELECT * FROM history WHERE eid='$eid' AND email='$email' ") or die('Error157');
-          echo  '<div class="panel">
-                    <center>
-                      <p class="title" style="color:#660033; font-size: 2rem;">Result</p>
-                    <center>
+            $q = mysqli_query($con, "SELECT * FROM history WHERE eid='$eid' AND email='$email' ") or die('Error157');
+            $q2 = mysqli_query($con, "SELECT * FROM quiz WHERE eid='$eid'") or die('Error158');
+            while ($row = mysqli_fetch_array($q2)) {
+              $perCorrect = $row['sahi'];
+              $perWrong = $row['wrong'];
+            }
+            echo  '<div class="panel">
+                      <p class="title fs-1" style="color:#660033;">Result</p>
                     <br />
                     <div class = "table-responsive">
-                     <table class="table table-striped title1" style="font-size:20px;font-weight:1000;">';
+                     <table class="table table-hover title1 fs-5 fw-bold">';
 
-          while ($row = mysqli_fetch_array($q)) {
-            $s = $row['score'];
-            $w = $row['wrong'];
-            $r = $row['sahi'];
-            $qa = $row['level'];
-            echo  '<tr style="color:#66ccff">
-                      <td>Total Questions</td>
+            while ($row = mysqli_fetch_array($q)) {
+              $s = $row['score'];
+              $w = $row['wrong'];
+              $r = $row['sahi'];
+              $qa = $row['level'];
+              echo  '<tr class="table-primary">
+                      <td class="text-start">Total Questions</td>
                       <td>' . $qa . '</td>
                     </tr>
-                    <tr style="color:#99cc32">
-                      <td>right Answer&nbsp;<span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span></td>
-                      <td>' . $r . '</td>
+                    <tr class="text-success table-primary">
+                      <td class="text-start">Right Answers&nbsp;<i class="fa fa-check-circle"></i></td>
+                      <td>' . $r . '&nbsp;(+' . $perCorrect * $r . ')</td>
                     </tr> 
-                    <tr style="color:red">
-                      <td>Wrong Answer&nbsp;<span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span></td>
-                      <td>' . $w . '</td>
+                    <tr class="text-danger table-primary">
+                      <td class="text-start">Wrong Answers&nbsp;<i class="fa fa-times-circle"></i></td>
+                      <td>' . $w . '&nbsp;(-' . $perWrong * $w . ')</td>
                     </tr>
-                    <tr style="color:#66CCFF">
-                      <td>Score&nbsp;<span class="glyphicon glyphicon-star" aria-hidden="true"></span></td>
+                    <tr class="text-primary table-primary">
+                      <td class="text-start">Score&nbsp;<i class="fa fa-star"></i></td>
                       <td>' . $s . '</td>
                     </tr>';
-          }
-          $q = mysqli_query($con, "SELECT * FROM ranks WHERE  email='$email' ") or die('Error157');
-          while ($row = mysqli_fetch_array($q)) {
-            $s = $row['score'];
-            echo '<tr style="color:#990000"><td>Overall Score&nbsp;<span class="glyphicon glyphicon-stats" aria-hidden="true"></span></td><td>' . $s . '</td></tr>';
-          }
-          echo '</table></div></div>';
-          $q = mysqli_query($con, "DELETE FROM students WHERE email='$email' ") or die('Error157');
+            }
+            $q = mysqli_query($con, "SELECT * FROM ranks WHERE  email='$email' ") or die('Error157');
+            while ($row = mysqli_fetch_array($q)) {
+              $s = $row['score'];
+              echo '<tr class="text-success table-info">
+                      <td class="text-start">Overall Score&nbsp;<i class="fa fa-signal"></i></td>
+                      <td>' . $s . '</td>
+                    </tr>';
+            }
+            echo '</table></div></div>';
         }
 
         //ranking start

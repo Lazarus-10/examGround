@@ -5,34 +5,6 @@ $email = $_SESSION['email'];
 date_default_timezone_set('Asia/Kolkata'); 
 
 
-echo '<script>
-var elem = document.documentElement;
-
-function openFullscreen() {
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) {
-    /* Safari */
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) {
-    /* IE11 */
-    elem.msRequestFullscreen();
-  }
-}
-
-function closeFullscreen() {
-  if (document.fullscreenElement) {
-    document.exitFullscreen();
-  } else if (document.webkitExitFullscreen) {
-    /* Safari */
-    document.webkitExitFullscreen();
-  } else if (document.msExitFullscreen) {
-    /* IE11 */
-    document.msExitFullscreen();
-  }
-}
-</script>';
-
 
 //delete feedback
 if (isset($_SESSION['key'])) {
@@ -140,7 +112,6 @@ if (isset($_SESSION['key'])) {
 
 //quiz start
 if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2) {
-  echo '<script>openFullscreen();</script> ';
   $eid = @$_GET['eid'];
   $sn = @$_GET['n'];
   $total = @$_GET['t'];
@@ -214,7 +185,6 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2) {
 
 //restart quiz
 if (@$_GET['q'] == 'quizre' && @$_GET['step'] == 25) {
-  echo '<script>openFullscreen();</script> ';
   $eid = @$_GET['eid'];
   $n = @$_GET['n'];
   $t = @$_GET['t'];

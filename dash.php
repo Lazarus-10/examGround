@@ -196,7 +196,7 @@
                       <td>' . $s . '</td>
                     </tr>';
           }
-          $q = mysqli_query($con, "SELECT * FROM rank WHERE  email='$email' ") or die('Error157');
+          $q = mysqli_query($con, "SELECT * FROM ranks WHERE  email='$email' ") or die('Error157');
           while ($row = mysqli_fetch_array($q)) {
             $s = $row['score'];
             echo '<tr style="color:#990000"><td>Overall Score&nbsp;<span class="glyphicon glyphicon-stats" aria-hidden="true"></span></td><td>' . $s . '</td></tr>';
@@ -207,7 +207,7 @@
 
         //ranking start
         if (@$_GET['q'] == 2) {
-          $q = mysqli_query($con, "SELECT * FROM rank  ORDER BY score DESC ") or die('Error223');
+          $q = mysqli_query($con, "SELECT * FROM ranks ORDER BY score DESC ") or die('Error223');
           echo  '<div class="panel">
           <div class="table-responsive">
           <table class="table table-striped table-hover title1">

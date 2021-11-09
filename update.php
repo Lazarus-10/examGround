@@ -2,6 +2,7 @@
 include_once 'dbConnection.php';
 session_start();
 $email = $_SESSION['email'];
+date_default_timezone_set('Asia/Kolkata'); 
 
 
 echo '<script>
@@ -47,7 +48,7 @@ if (isset($_SESSION['key'])) {
 if (isset($_SESSION['key'])) {
   if (@$_GET['demail'] && $_SESSION['key'] == 'saif91406714') {
     $demail = @$_GET['demail'];
-    $r1 = mysqli_query($con, "DELETE FROM rank WHERE email='$demail' ") or die('Error');
+    $r1 = mysqli_query($con, "DELETE FROM ranks WHERE email='$demail' ") or die('Error');
     $r2 = mysqli_query($con, "DELETE FROM history WHERE email='$demail' ") or die('Error');
     $result = mysqli_query($con, "DELETE FROM students WHERE email='$demail' ") or die('Error');
     header("location:dash.php?q=1");
@@ -193,17 +194,17 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2) {
     while ($row = mysqli_fetch_array($q)) {
       $s = $row['score'];
     }
-    $q = mysqli_query($con, "SELECT * FROM rank WHERE email='$email'") or die('Error161');
+    $q = mysqli_query($con, "SELECT * FROM ranks WHERE email='$email'") or die('Error161');
     $rowcount = mysqli_num_rows($q);
     //if the student is giving exam for the first time
     if ($rowcount == 0) {
-      $q2 = mysqli_query($con, "INSERT INTO rank VALUES('$email','$s',NOW())") or die('Error165');
+      $q2 = mysqli_query($con, "INSERT INTO ranks VALUES('$email','$s',NOW())") or die('Error165');
     } else { // if he had score for some previous exam
       while ($row = mysqli_fetch_array($q)) {
         $sun = $row['score'];
       }
       $sun = $s + $sun;
-      $q = mysqli_query($con, "UPDATE `rank` SET `score`=$sun ,time=NOW() WHERE email= '$email'") or die('Error174');
+      $q = mysqli_query($con, "UPDATE `ranks` SET `score`=$sun ,time=NOW() WHERE email= '$email'") or die('Error174');
     }
     header("location:account.php?q=result&eid=$eid");
   } else {  // if the user is admin => just show the result
@@ -224,11 +225,11 @@ if (@$_GET['q'] == 'quizre' && @$_GET['step'] == 25) {
   }
   $q = mysqli_query($con, "DELETE FROM `history` WHERE eid='$eid' AND email='$email' ") or die('Error184');
   $q = mysqli_query($con, "INSERT INTO history VALUES('$email','$eid' ,'0','0','0','0',NOW() )") or die('Error137');
-  $q = mysqli_query($con, "SELECT * FROM rank WHERE email='$email'") or die('Error161');
+  $q = mysqli_query($con, "SELECT * FROM ranks WHERE email='$email'") or die('Error161');
   while ($row = mysqli_fetch_array($q)) {
     $sun = $row['score'];
   }
   $sun = $sun - $s;
-  $q = mysqli_query($con, "UPDATE `rank` SET `score`=$sun ,time=NOW() WHERE email= '$email'") or die('Error174');
+  $q = mysqli_query($con, "UPDATE `ranks` SET `score`=$sun ,time=NOW() WHERE email= '$email'") or die('Error174');
   header("location:account.php?q=quiz&step=2&eid=$eid&n=1&t=$t&s=$seed");
 }

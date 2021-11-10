@@ -170,7 +170,6 @@ select:focus {
     width: 100%;
     margin: 40px 0;
     padding: 0;
-    min-height: calc(100vh - 230px);
   }
 
   .panel input:focus,

@@ -34,7 +34,7 @@ if (!(isset($_SESSION['email']))) {
   $college = 'IIEST';
 } ?>
 
-<body class="bodyClass" style="background: url(image/bg5.jpg);">
+<body class="bodyClass" style="background: url(image/bg5.jpg);overflow-x:hidden;">
 
   <!----------------------- Setting up the navbar for header ------------------------->
 

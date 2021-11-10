@@ -98,14 +98,6 @@
   border: 1px solid rgb(31, 30, 30);
   color: #000;
 }
-.animation {
-  flex-grow: 1;
-  /*transition: all 400ms ease;*/
-  -webkit-transition: all 400ms ease;
-  -moz-transition: all 400ms ease;
-  -o-transition: all 400ms ease;
-  transition: all 400ms ease;
-}
 
 body {
   width: 100%;
@@ -178,6 +170,7 @@ select:focus {
     width: 100%;
     margin: 40px 0;
     padding: 0;
+    min-height: calc(100vh - 230px);
   }
 
   .panel input:focus,

@@ -146,6 +146,26 @@ body {
   src: url("../fonts/gothics.ttf");
 }
 
+.testClass {
+  display: flex;
+}
+
+.testClass i.fa {
+  width: 30px;
+  font-size: 23px;
+  border-width: 0;
+  background-color: grey;
+  border-radius: 5px 0 0 5px;
+}
+
+.testClass input {
+  border-radius: 0 5px 5px 0;
+}
+.testClass input:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
 .panel {
   margin: 2.5rem;
   padding: 10px;

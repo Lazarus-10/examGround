@@ -152,17 +152,20 @@ body {
   font: 15px "Century Gothic", "Times Roman", sans-serif;
   background-color: transparent;
   text-align: center;
+}
+
+.panel2 {
   animation-name: form-entry;
   animation-fill-mode: both;
   animation-duration: 3s;
 }
 
-.panel input,
-.panel select {
+.panel2 input,
+.panel2 select {
   box-shadow: 0 10px 20px black;
 }
-.panel input:focus,
-.panel select:focus {
+.panel2 input:focus,
+.panel2 select:focus {
   border-color: inherit;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -201,7 +204,7 @@ body {
     margin-left: 0px;
     transform: translateY(-0.15em);
     transition: 0.4s;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid blue;
   }
 }
 

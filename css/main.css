@@ -115,15 +115,11 @@ body {
   background-attachment: fixed;
   min-height: 100%;
 }
-.body-with-footer {
-  min-height: calc(100vh - 93px);
-}
 
 .bodyClass {
   background: url(../image/iiest6.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: calc(100vh - 93px);
   width: 100%;
 }
 
@@ -179,6 +175,7 @@ select:focus {
     width: 100%;
     margin: 40px 0;
     padding: 0;
+    min-height: calc(100vh - 150px);
   }
 
   .panel input:focus,

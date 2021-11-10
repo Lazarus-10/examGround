@@ -70,7 +70,7 @@
 
 
   <!-- Sign Up form -->
-  <div id="mybg-div"  style="overflow-x:hidden;">
+  <div id="mybg-div" class = "bodyClass"  style="overflow:hidden;">
     <div class="col-md-4 panel ">
       <form class="form-horizontal" style="font-size: 0;" name="form" action="sign.php?q=account.php" onSubmit="return validateForm()" method="POST">
         <fieldset>
@@ -135,8 +135,6 @@
         echo '<script> alert("' . @$_GET['q7'] . '");</script>';
       } ?>
 
-      <a class="already" data-bs-toggle="modal" data-bs-target="#signInModal">Already Have an Account? Sign In</a>
-      <a href=""></a>
     </div>
 
   </div>

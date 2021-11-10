@@ -116,6 +116,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   width: 100%;
+  min-height: calc(100vh - 93px);
 }
 
 .display-off {

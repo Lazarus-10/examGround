@@ -70,27 +70,26 @@
 
 
   <!-- Sign Up form -->
-  <div id="mybg-div" class="bodyClass">
-
-    <div class="col-md-4 float-md-end panel ">
+  <div id="mybg-div"  style="overflow-x:hidden;">
+    <div class="col-md-4 panel ">
       <form class="form-horizontal" style="font-size: 0;" name="form" action="sign.php?q=account.php" onSubmit="return validateForm()" method="POST">
         <fieldset>
           <!-- Text input(name)-->
           <div class="row mb-3" style="justify-content : center">
-            <div class="col-sm-10">
+            <div class="col-11 col-md-10">
               <input id="name" name="name" placeholder="Enter your name" type="text" class="form-control input" autofocus>
             </div>
           </div>
           <!-- Text input(name)-->
           <div class="row mb-3" style="justify-content : center">
-            <div class="col-sm-10">
+            <div class="col-11 col-md-10">
               <input id="roll" name="roll" placeholder="Enrollment Number" type="text" class="form-control input" required>
             </div>
           </div>
 
           <!-- Selection input(Gender)-->
           <div class="row mb-3" style="justify-content : center">
-            <div class="col-sm-10">
+            <div class="col-11 col-md-10">
               <select id="gender" name="gender" placeholder="Enter your gender" class="form-control input">
                 <option value="M">Select Gender</option>
                 <option value="M">Male</option>
@@ -101,28 +100,28 @@
 
           <!-- Text input(Email)-->
           <div class="row mb-3" style="justify-content : center">
-            <div class="col-sm-10">
+            <div class="col-11 col-md-10">
               <input id="email" name="email" maxlength="50" placeholder="example@students.iiests.ac.in" type="email" class="form-control input">
             </div>
           </div>
 
           <!-- Number input(phone)-->
           <div class="row mb-3" style="justify-content : center">
-            <div class="col-sm-10">
+            <div class="col-11 col-md-10">
               <input id="mob" name="mob" placeholder="Enter your Mobile number" type="number" class="form-control input">
             </div>
           </div>
 
           <!-- Text input(Password)-->
           <div class="row mb-3" style="justify-content : center">
-            <div class="col-sm-10">
+            <div class="col-11 col-md-10">
               <input id="password" name="password" placeholder="Enter your Password" type="password" class="form-control input">
             </div>
           </div>
 
           <!-- Text input(confirm Password)-->
           <div class="row mb-3" style="justify-content : center">
-            <div class="col-sm-10">
+            <div class="col-11 col-md-10">
               <input id="cpassword" name="cpassword" placeholder="Confirm Password" type="password" class="form-control input">
             </div>
           </div>
@@ -228,7 +227,7 @@
             <img src="image/emanur.png" width=100 height=100 alt="Emanur Rahman" class="img-rounded">
             <a href="#" style="display: block; color:#202020; font-family:'typo' ; font-size:16px; color: blue; text-decoration: none;" title="Find on Facebook">Emanur Rahman</a>
             <h5 style="color:#202020; font-family:'typo'; font-size: 13px;" class="title1">+91 7047615466</h5>
-            <a style="font-family:'typo';font-size: 14px; text-decoration: none;" class="title1" href="mailto:ksarim225@gmail.com" target="_blank">emanur99rahman@gmail.com</a>
+            <a style="font-family:'typo';font-size: 14px; text-decoration: none;" class="title1" href="mailto:emanur99rahman@gmail.com" target="_blank">emanur99rahman@gmail.com</a>
 
           </div>
         </div>

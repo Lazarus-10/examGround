@@ -510,42 +510,45 @@ if (!(isset($_SESSION['email']))) {
 
   <!------------------------------------- Modal for admin login ------------------------------------->
   <div class="modal fade title1" id="adminLogin">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title" style="font-family:'typo' "><span style="color:orange">Log In</span>
-          </h4>
-          <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body title1">
-          <form role="form" method="post" action="admin.php?q=index.php">
-            <fieldset>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" style="font-family:'typo' "><span style="color:orange">Log In</span>
+        </h4>
+        <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body title1">
+        <form role="form" method="post" action="admin.php?q=index.php">
 
-              <!-- text-input -->
-              <div class="row mb-2">
-                <div class="col-sm-10 col-md-6">
-                  <input id="uName" name="uname" maxlength="20" placeholder="Admin user-id" class="form-control input" type="text" autofocus>
-                </div>
+          <fieldset>
+            <!-- text-input -->
+            <div class="row mb-2">
+              <div class="testClass col-sm-10 col-md-6">
+                <i class = "fa fa-user fa-border"></i>
+                <input id="uName" name="uname" maxlength="20" placeholder="Admin user-id" class="form-control input" type="text" autofocus>
               </div>
-
-
-              <!-- Password input-->
-              <div class="row mb-2">
-                <div class="col-sm-10 col-md-6">
-                  <input name="password" maxlength="15" placeholder="Password" type="password" class="form-control input">
-                </div>
-              </div>
-            </fieldset>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" name="login" class="btn btn-primary">Log In</button>
             </div>
-          </form>
-        </div>
+            
+            
+            <!-- Password input-->
+            <div class="row mb-2">
+              <div class="testClass col-sm-10 col-md-6">
+                <i class = "fa fa-key fa-border"></i>
+                <input name="password" maxlength="15" placeholder="Password" type="password" class="form-control input">
+              </div>
+            </div>
+          </fieldset>
 
-      </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-  </div><!-- /.modal -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" name="login" class="btn btn-primary">Log In</button>
+          </div>
+        </form>
+      </div>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
 
   <!------------ This script hides all the navbars and footers as soon as the quiz starts ------------>

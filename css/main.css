@@ -177,7 +177,7 @@ body {
 .panel2 {
   animation-name: form-entry;
   animation-fill-mode: both;
-  animation-duration: 3s;
+  animation-duration: 2.5s;
 }
 
 .panel2 input,

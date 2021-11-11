@@ -72,6 +72,7 @@
           <li class="nav-item">
             <a class="nav-link <?php if (@$_GET['q'] == 2) echo ' active'; ?>" href="dash.php?q=2"><i class="fa fa-signal"></i>&nbsp;Rankings</a>
           </li>
+      
           <li class="nav-item">
             <a class="nav-link <?php if (@$_GET['q'] == 3) echo ' active'; ?>" href="dash.php?q=3"><i class="fa fa-comments "></i>&nbsp;Feedbacks</a>
           </li>
@@ -195,46 +196,11 @@
             $q = mysqli_query($con, "DELETE FROM students WHERE email='$email' ") or die('Error157');
         }
 
-        //ranking start
-        if (@$_GET['q'] == 2) {
-          $q = mysqli_query($con, "SELECT * FROM ranks ORDER BY score DESC ") or die('Error223');
-          echo  '<div class="panel">
-          <div class="table-responsive">
-          <table class="table table-striped table-hover title1">
-            <tr class = "table-dark">
-                <td><b>Rank</b></td>
-                <td><b>Name</b></td>
-                <td><b>Gender</b></td>
-                <td><b>College</b></td>
-                <td><b>Score</b></td>
-              </tr>';
-          $c = 1;
-          while ($row = mysqli_fetch_array($q)) {
-            $e = $row['email'];
-            $s = $row['score'];
-            $q12 = mysqli_query($con, "SELECT * FROM students WHERE email='$e' ") or die('Error231');
-            while ($row = mysqli_fetch_array($q12)) {
-              $name = $row['name'];
-              $gender = $row['gender'];
-            }
-            echo '<tr class = "table-primary fw-bold">
-                    <td class = "text-primary">' . $c++ . '</td>
-                    <td>' . $name . '</td>
-                    <td>' . $gender . '</td>
-                    <td>' . $college . '</td>
-                    <td>' . $s . '</td>
-                  <tr>';
-          }
-          echo
-          '</table>
-          </div>
-        </div>';
-        }
-
+       
         ?>
 
-
         <!--home closed-->
+
         <!--students start-->
         <?php if (@$_GET['q'] == 1) {
 
@@ -277,6 +243,92 @@
         } ?>
         <!--students end-->
 
+        <!-- ranking start -->
+        <?php if (@$_GET['q'] == 2) {
+          $q = mysqli_query($con, "SELECT * FROM ranks ORDER BY score DESC ") or die('Error223');
+          echo  '<div class="panel">
+          <div class="table-responsive">
+          <table class="table table-striped table-hover title1">
+            <tr class = "table-dark">
+                <td><b>Rank</b></td>
+                <td><b>Name</b></td>
+                <td><b>Gender</b></td>
+                <td><b>College</b></td>
+                <td><b>Score</b></td>
+                <td><b>History</b></td>
+              </tr>';
+          $c = 1;
+          while ($row = mysqli_fetch_array($q)) {
+            $e = $row['email'];
+            $s = $row['score'];
+            $q12 = mysqli_query($con, "SELECT * FROM students WHERE email='$e' ") or die('Error231');
+            while ($row = mysqli_fetch_array($q12)) {
+              $name = $row['name'];
+              $gender = $row['gender'];
+            }
+            echo '<tr class = "table-primary fw-bold">
+                    <td class = "text-primary">' . $c++ . '</td>
+                    <td>' . $name . '</td>
+                    <td>' . $gender . '</td>
+                    <td>' . $college . '</td>
+                    <td>' . $s . '</td>
+                    <td><a title="See History" href="dash.php?q=6&e='.$e.'"><i class="fa fa-folder-open fa-lg"></i></a></td>
+
+                  <tr>';
+          }
+          echo
+          '</table>
+          </div>
+        </div>';
+        }
+        ?>
+
+        <!-- History Start -->
+        <?php if(@$_GET['q'] == 6 && @$_GET['e']){
+          $e = @$_GET['e'];
+          $q = mysqli_query($con, "SELECT roll, name FROM students WHERE email='$e'") or die('Error199');
+          $row = mysqli_fetch_array($q);
+          echo '<h4 class = "title panel2" style = "text-align:center; margin: 20px;">HISTORY for <span title="" class ="text-danger">'.$row['name']. '</span> <span ><a title="Back to Ranking" style="text-decoration:none; font-size:1rem;" href="dash.php?q=2">&nbsp;<i class="btn btn-primary quizBtn fa fa-level-up"></i></a></span></h4>
+          
+          ';
+
+
+          $q = mysqli_query($con, "SELECT * FROM history WHERE email='$e' ORDER BY date DESC ") or die('Error197');
+          echo  '<div class="panel panel2 title" style="margin-top:0;">
+                   <div class="table-responsive">
+                    <table class="table table-hover table-striped title1" >
+                      <tr class = "table-dark">
+                        <td><b>S.N.</b></td>
+                        <td><b>Quiz</b></td>
+                        <td><b>Question Solved</b></td>
+                        <td><b>Right</b></td>
+                        <td><b>Wrong<b></td>
+                        <td><b>Score</b></td>
+                      </tr>';
+          $c = 0;
+          while ($row = mysqli_fetch_array($q)) {
+            $eid = $row['eid'];
+            $s = $row['score'];
+            $w = $row['wrong'];
+            $r = $row['sahi'];
+            $qa = $row['level'];
+            $q23 = mysqli_query($con, "SELECT title FROM quiz WHERE  eid='$eid' ") or die('Error208');
+            $row = mysqli_fetch_array($q23);
+            $title = $row['title'];
+            $c++;
+            echo '<tr class = "fw-bold">
+                      <td style = "color: blue" >' . $c . '</td>
+                      <td style = "color: #042391" >' . $title . '</td>
+                      <td>' . $qa . '</td>
+                      <td style = "color: green">' . $r . '</td>
+                      <td style = "color: red">' . $w . '</td>
+                      <td style = "color: blue">' . $s . '</td>
+                    </tr>';
+          }
+          echo '</table></div></div>';
+
+        }
+        ?>
 
         <!--feedback start-->
         <?php if (@$_GET['q'] == 3) {
@@ -320,6 +372,8 @@
         }
         ?>
         <!--feedback closed-->
+
+
 
         <!--feedback reading portion start-->
         <?php if (@$_GET['fid']) {

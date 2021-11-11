@@ -34,7 +34,7 @@ if (!(isset($_SESSION['email']))) {
   $college = 'IIEST';
 } ?>
 
-<body class="bodyClass" style="background: url(image/bg5.jpg);overflow-x:hidden;">
+<body class="bodyClass" style="background: url(image/bg5.jpg); overflow-x:hidden;">
 
   <!----------------------- Setting up the navbar for header ------------------------->
 
@@ -244,14 +244,7 @@ if (!(isset($_SESSION['email']))) {
             $sn = @$_GET['n'];
             $seed = @$_GET['s'];
             $total = @$_GET['t'];
-            // if ($sn > $total) {
-            //   echo '<a type="button" id="last" style = "display:none;" ></a>';
-            //   echo '<script type="text/javascript">
-            //   $(document).ready(function() {
-            //     $("#last").click();
-            //   });
-            //   </script>';
-            // }
+        
             $q = mysqli_query($con, "SELECT* FROM(SELECT ROW_NUMBER() OVER (ORDER BY RAND($seed)) AS row_num , eid , qid , qns ,choice , sn From questions WHERE eid = '$eid') AS sub WHERE row_num = '$sn'");
             // $q = mysqli_query($con, "SELECT * FROM questions WHERE eid='$eid' ORDER BY RAND($seed)");
             echo
@@ -340,44 +333,49 @@ if (!(isset($_SESSION['email']))) {
           <?php
           /***************************************  History start **************************************/
           if (@$_GET['q'] == 2) {
-            echo '<script type="text/javascript">
-            $(".navbar-nav li a").function() {
-              $(".navbar-nav li a").removeClass(active);
-              $(this).addClass(active);    
-            };
-            </script>';
             $q = mysqli_query($con, "SELECT * FROM history WHERE email='$email' ORDER BY date DESC ") or die('Error197');
             echo  '<div class="panel title">
                      <div class="table-responsive">
                       <table class="table table-hover table-striped title1" >
-                        <tr class = "table-dark">
-                          <td><b>S.N.</b></td>
-                          <td><b>Quiz</b></td>
-                          <td><b>Question Solved</b></td>
-                          <td><b>Right</b></td>
-                          <td><b>Wrong<b></td>
-                          <td><b>Score</b></td>
-                        </tr>';
-            $c = 0;
-            while ($row = mysqli_fetch_array($q)) {
-              $eid = $row['eid'];
-              $s = $row['score'];
-              $w = $row['wrong'];
-              $r = $row['sahi'];
-              $qa = $row['level'];
-              $q23 = mysqli_query($con, "SELECT title FROM quiz WHERE  eid='$eid' ") or die('Error208');
-              $row = mysqli_fetch_array($q23);
-              $title = $row['title'];
-              $c++;
-              echo '<tr class = "fw-bold">
-                        <td style = "color: blue" >' . $c . '</td>
-                        <td style = "color: #042391" >' . $title . '</td>
-                        <td>' . $qa . '</td>
-                        <td style = "color: green">' . $r . '</td>
-                        <td style = "color: red">' . $w . '</td>
-                        <td style = "color: blue">' . $s . '</td>
-                      </tr>';
-            }
+                      <tr class = "table-dark">
+                        <td><b>S.N.</b></td>
+                        <td><b>Quiz</b></td>
+                        <td><b>Question Solved</b></td>
+                        <td><b>Right</b></td>
+                        <td><b>Wrong<b></td>
+                        <td><b>Date</b></td>
+                        <td><b>Time</b></td>
+                        <td><b>Score</b></td>
+
+                    </tr>';
+        $c = 0;
+        while ($row = mysqli_fetch_array($q)) {
+          $eid = $row['eid'];
+          $s = $row['score'];
+          $w = $row['wrong'];
+          $r = $row['sahi'];
+          $qa = $row['level'];
+          $dt = $row['date'];
+          $q23 = mysqli_query($con, "SELECT title FROM quiz WHERE  eid='$eid' ") or die('Error208');
+          $row = mysqli_fetch_array($q23);
+          $title = $row['title'];
+          $c++;
+
+          $time = new DateTime($dt);
+          $date = $time->format('j.n.Y');
+          $time = $time->format('H:i');
+
+          echo '<tr class = "fw-bold">
+                    <td style = "color: blue" >' . $c . '</td>
+                    <td style = "color: #042391" >' . $title . '</td>
+                    <td>' . $qa . '</td>
+                    <td style = "color: green">' . $r . '</td>
+                    <td style = "color: red">' . $w . '</td>
+                    <td style = "color: ">' . $date . '</td>
+                    <td style = "color: ">' . $time . '</td>
+                    <td style = "color: blue">' . $s . '</td>
+                  </tr>';
+        }
             echo '</table></div></div>';
           }
 

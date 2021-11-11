@@ -167,7 +167,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" style="font-family:'typo' "><span>Log In</span></h4>
+        <h4 class="modal-title" style="font-family:'typo' "><span  style="color:orange">Log In</span></h4>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body title1">
@@ -258,23 +258,26 @@
       </div>
       <div class="modal-body title1">
         <form role="form" method="post" action="admin.php?q=index.php">
-          <fieldset>
 
+          <fieldset>
             <!-- text-input -->
             <div class="row mb-2">
-              <div class="col-sm-10 col-md-6">
+              <div class="testClass col-sm-10 col-md-6">
+                <i class = "fa fa-user fa-border"></i>
                 <input id="uName" name="uname" maxlength="20" placeholder="Admin user-id" class="form-control input" type="text" autofocus>
               </div>
             </div>
-
-
+            
+            
             <!-- Password input-->
             <div class="row mb-2">
-              <div class="col-sm-10 col-md-6">
+              <div class="testClass col-sm-10 col-md-6">
+                <i class = "fa fa-key fa-border"></i>
                 <input name="password" maxlength="15" placeholder="Password" type="password" class="form-control input">
               </div>
             </div>
           </fieldset>
+
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             <button type="submit" name="login" class="btn btn-primary">Log In</button>

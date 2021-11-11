@@ -117,6 +117,7 @@
               <td>Max. Marks</td>
               <td>Time limit</td>
               <td></td>
+              <td></td>
               </tr>';
           $c = 1;
           while ($row = mysqli_fetch_array($result)) {
@@ -141,6 +142,11 @@
             <td>
               <b>
                   <a href="account.php?q=quiz&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '" class="pull-right btn btn-success quizBtn" style="margin:0px; padding-right: 1.30rem; padding-left: 1.30rem;" ><b> Test </b></a>
+              </b>
+            </td>
+            <td>
+              <b>
+                  <a href="account.php?q=quiz&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '" class="pull-right btn btn-success quizBtn" style="margin:0px; padding-right: 1.30rem; padding-left: 1.30rem;" ><b> Edit </b></a>
               </b>
             </td>
           </tr>';
@@ -215,6 +221,7 @@
                       <td><b>College</b></td>
                       <td><b>Email</b></td>
                       <td><b>Mobile</b></td>
+                      <td><b>Verified</b></td>
                       <td></td>
                     </tr>';
           $c = 1;
@@ -223,6 +230,7 @@
             $mob = $row['mob'];
             $gender = $row['gender'];
             $email = $row['email'];
+            $status = $row['is_verified'];
 
             echo '<tr class = "table-primary fw-bold">
                     <td class = "fw-bolder fs-6 text-primary">' . $c++ . '</td><td>' . $name . '</td>
@@ -233,6 +241,9 @@
             if ($mob == 0) echo '-- NULL --';
             else echo $mob;
             echo '</td>
+                    <td>
+                      <i class="fa fa-2x ';?> <?php if($status)echo 'fa-check-circle text-success'; else echo'fa-times-circle text-danger';?> <?php echo'"></i>
+                    </td>
 	                  <td>
                       <a title="Delete Student" href="update.php?demail=' . $email . '"><i class="btn btn-primary quizBtn fa fa-trash-o"></i></a>
                     </td>

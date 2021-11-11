@@ -171,7 +171,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body title1">
-        <form role="form" class="form-horizontal" action="login.php" method="POST">
+        <form role="form" class="form-horizontal" action="login.php?q=index.php" method="POST">
           <fieldset>
             <!-- Text input -->
             <div class="row mb-2">

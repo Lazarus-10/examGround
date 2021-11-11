@@ -2,7 +2,6 @@
 include_once 'dbConnection.php';
 session_start();
 $email = $_SESSION['email'];
-date_default_timezone_set('Asia/Kolkata'); 
 
 
 

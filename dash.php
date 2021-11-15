@@ -117,7 +117,6 @@
               <td>Max. Marks</td>
               <td>Time limit</td>
               <td></td>
-              <td></td>
               </tr>';
           $c = 1;
           while ($row = mysqli_fetch_array($result)) {
@@ -142,11 +141,6 @@
             <td>
               <b>
                   <a href="account.php?q=quiz&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '" class="pull-right btn btn-success quizBtn" style="margin:0px; padding-right: 1.30rem; padding-left: 1.30rem;" ><b> Test </b></a>
-              </b>
-            </td>
-            <td>
-              <b>
-                  <a href="account.php?q=quiz&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '" class="pull-right btn btn-success quizBtn" style="margin:0px; padding-right: 1.30rem; padding-left: 1.30rem;" ><b> Edit </b></a>
               </b>
             </td>
           </tr>';

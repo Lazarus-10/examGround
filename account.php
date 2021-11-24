@@ -158,7 +158,7 @@ if (!(isset($_SESSION['email']))) {
                           <td style="color:#ef3535">' . $time . '&nbsp;min</td>
                           <td>
                             <b>
-                                <a href="account.php?q=quiz&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '" class="pull-right btn btn-success quizBtn" style="margin:0px; padding-right: 1.30rem; padding-left: 1.30rem;" ><b> <i class="fa fa-play"></i>&nbsp;Start </b></a>
+                            <a href="account.php?q=quiz&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '" class="pull-right btn btn-success quizBtn" style="margin:0px; padding-right: 1.0rem; padding-left: 1.20rem;" ><b> <i class="fa fa-play"></i>&nbsp;Start </b></a>
                             </b>
                           </td>
                         </tr>';
@@ -173,7 +173,7 @@ if (!(isset($_SESSION['email']))) {
                           <td style="color:#ef3535">' . $time . '&nbsp;min</td>
                           <td>
                             <b>
-                            <a class="pull-right btn btn-warning quizBtn disabled" href = "account.php?q=restart&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '"  style="margin:0px; text-shadow: 2px 2px 4px #fff; "><b> <i class="fa fa-check"></i>&nbsp;&nbsp;Done&nbsp;</b></span></a>
+                            <a class="pull-right btn btn-warning quizBtn disabled" href = "account.php?q=restart&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '"  style="margin:0px; text-shadow: 2px 2px 4px #fff; "><b> <i class="fa fa-check"></i>&nbsp;Done</b></span></a>
                             </b>
                           </td>
                         </tr>';

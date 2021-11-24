@@ -108,7 +108,7 @@
           <!-- Number input(phone)-->
           <div class="row mb-3" style="justify-content : center">
             <div class="col-11 col-md-10">
-              <input id="mob" name="mob" placeholder="Enter your Mobile number" type="number" class="form-control input" required>
+              <input id="mob" name="mob" placeholder="Enter your Mobile number" type="number" class="form-control input">
             </div>
           </div>
 

@@ -110,7 +110,15 @@ if (!(isset($_SESSION['email']))) {
 
           <!------------------------------------- HOME PAGE START ------------------------------------->
           <?php if (@$_GET['q'] == 1) {
-            $result = mysqli_query($con, "SELECT * FROM quiz ORDER BY date DESC") or die('Error');
+            $q = mysqli_query($con, "SELECT * FROM subjects where email='$email'");
+            $res = mysqli_fetch_array($q);
+            $sub1 = $res['sub1'];
+            $sub2 = $res['sub2'];
+            $sub3 = $res['sub3'];
+            $sub4 = $res['sub4'];
+            $sub5 = $res['sub5'];
+
+            $result = mysqli_query($con, "SELECT * FROM quiz WHERE eid IN ('$sub1', '$sub2', '$sub3', '$sub4', '$sub5')") or die(mysqli_error($con));
             /***************  Printing the table headings ***************/
             echo  '<div class="panel">
                       <div class="table-responsive">
@@ -211,27 +219,7 @@ if (!(isset($_SESSION['email']))) {
           ?>
           <!------------------------------------- HOME PAGE CLOSED ------------------------------------->
 
-          <!-- <span id="countdown" class="timer"></span>
-          <script>
-            var seconds = 40;
-
-            function secondPassed() {
-              var minutes = Math.round((seconds - 30) / 60);
-              var remainingSeconds = seconds % 60;
-              if (remainingSeconds < 10) {
-                remainingSeconds = "0" + remainingSeconds;
-              }
-              document.getElementById('countdown').innerHTML = minutes + ":" + remainingSeconds;
-              if (seconds == 0) {
-                clearInterval(countdownTimer);
-                document.getElementById('countdown').innerHTML = "Buzz Buzz";
-              } else {
-                seconds--;
-              }
-            }
-            var countdownTimer = setInterval('secondPassed()', 1000);
-          </script> -->
-
+          
           <!--home closed-->
 
 
@@ -247,8 +235,33 @@ if (!(isset($_SESSION['email']))) {
         
             $q = mysqli_query($con, "SELECT* FROM(SELECT ROW_NUMBER() OVER (ORDER BY RAND($seed)) AS row_num , eid , qid , qns ,choice , sn From questions WHERE eid = '$eid') AS sub WHERE row_num = '$sn'");
             // $q = mysqli_query($con, "SELECT * FROM questions WHERE eid='$eid' ORDER BY RAND($seed)");
+              echo '<script>
+                 var seconds = 300;
+              </script>';
             echo
-            ' <div class="container container2 mt-5 my-1">
+            '
+            <span id="countdown" class="timer"></span>
+            <script>
+  
+              function secondPassed() {
+                var minutes = Math.floor(seconds / 60);
+                var remainingSeconds = seconds % 60;
+                if (remainingSeconds < 10) {
+                  remainingSeconds = "0" + remainingSeconds;
+                }
+                document.getElementById('; echo '"countdown"'; echo').innerHTML = minutes + ":" + remainingSeconds;
+                if (seconds == 0) {
+                  clearInterval(countdownTimer);
+                  document.getElementById('; echo'"countdown"';echo').innerHTML = "Buzz Buzz";
+                } else {
+                  seconds--;
+                }
+              }
+              var countdownTimer = setInterval(';echo '"secondPassed()"';echo', 1000);
+            </script>
+
+
+            <div class="container container2 mt-5 my-1">
                 <div class="question ml-sm-3 pl-sm-3 pt-2">';
 
             /***************  Printing the question ***************/

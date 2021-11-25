@@ -158,7 +158,7 @@ if (!(isset($_SESSION['email']))) {
                           <td style="color:#ef3535">' . $time . '&nbsp;min</td>
                           <td>
                             <b>
-                            <a href="account.php?q=quiz&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '" class="pull-right btn btn-success quizBtn" style="margin:0px; padding-right: 1.0rem; padding-left: 1.20rem;" ><b> <i class="fa fa-play"></i>&nbsp;Start </b></a>
+                                <a href="account.php?q=quiz&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '" class="pull-right btn btn-success quizBtn" style="margin:0px; padding-right: 1.0rem; padding-left: 1.20rem;" ><b> <i class="fa fa-play"></i>&nbsp;Start </b></a>
                             </b>
                           </td>
                         </tr>';
@@ -236,11 +236,11 @@ if (!(isset($_SESSION['email']))) {
             $q = mysqli_query($con, "SELECT* FROM(SELECT ROW_NUMBER() OVER (ORDER BY RAND($seed)) AS row_num , eid , qid , qns ,choice , sn From questions WHERE eid = '$eid') AS sub WHERE row_num = '$sn'");
             // $q = mysqli_query($con, "SELECT * FROM questions WHERE eid='$eid' ORDER BY RAND($seed)");
               echo '<script>
-                 var seconds = 300;
+                 var seconds = 60;
               </script>';
             echo
             '
-            <span id="countdown" class="timer"></span>
+            <span id="countdown" class="timer circle"></span>
             <script>
   
               function secondPassed() {
@@ -248,6 +248,9 @@ if (!(isset($_SESSION['email']))) {
                 var remainingSeconds = seconds % 60;
                 if (remainingSeconds < 10) {
                   remainingSeconds = "0" + remainingSeconds;
+                }
+                if(minutes < 10){
+                  minutes = "0" + minutes;
                 }
                 document.getElementById('; echo '"countdown"'; echo').innerHTML = minutes + ":" + remainingSeconds;
                 if (seconds == 0) {
@@ -261,7 +264,7 @@ if (!(isset($_SESSION['email']))) {
             </script>
 
 
-            <div class="container container2 mt-5 my-1">
+            <div class="container container2">
                 <div class="question ml-sm-3 pl-sm-3 pt-2">';
 
             /***************  Printing the question ***************/

@@ -236,7 +236,7 @@ if (!(isset($_SESSION['email']))) {
             $q = mysqli_query($con, "SELECT* FROM(SELECT ROW_NUMBER() OVER (ORDER BY RAND($seed)) AS row_num , eid , qid , qns ,choice , sn From questions WHERE eid = '$eid') AS sub WHERE row_num = '$sn'");
             // $q = mysqli_query($con, "SELECT * FROM questions WHERE eid='$eid' ORDER BY RAND($seed)");
               echo '<script>
-                 var seconds = 60;
+                 var seconds = 10;
               </script>';
             echo
             '
@@ -256,6 +256,9 @@ if (!(isset($_SESSION['email']))) {
                 if (seconds == 0) {
                   clearInterval(countdownTimer);
                   document.getElementById('; echo'"countdown"';echo').innerHTML = "Buzz Buzz";
+                  $(document).ready(function() {
+                    $("#submit-btn").click();
+                  });
                 } else {
                   seconds--;
                 }
@@ -286,7 +289,7 @@ if (!(isset($_SESSION['email']))) {
             }
             echo
             '<div class="d-flex align-items-center pt-3 qus">
-            <div class="ms-auto"> <button class="quizBtn btn btn-primary bg-primary text-black" style = "text-shadow:none;" type="submit">Submit</button> </div>
+            <div class="ms-auto"> <button id="submit-btn" class="quizBtn btn btn-primary bg-primary text-black" style = "text-shadow:none;" type="submit">Submit</button> </div>
                   </div>
                 </form>
               </div>';

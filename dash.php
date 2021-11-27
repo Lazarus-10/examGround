@@ -304,9 +304,9 @@
                       <tr class = "table-dark">
                         <td><b>S.N.</b></td>
                         <td><b>Quiz</b></td>
-                        <td><b>Question Solved</b></td>
-                        <td><b>Right</b></td>
+                        <td><b>Attempted</b></td>
                         <td><b>Skipped<b></td>
+                        <td><b>Right</b></td>
                         <td><b>Wrong<b></td>
                         <td><b>Date</b></td>
                         <td><b>Time</b></td>
@@ -335,8 +335,8 @@
                       <td style = "color: blue" >' . $c . '</td>
                       <td style = "color: #042391" >' . $title . '</td>
                       <td>' . $qa . '</td>
-                      <td style = "color: green">' . $r . '</td>
                       <td class="text-primary">' . $skp . '</td>
+                      <td style = "color: green">' . $r . '</td>
                       <td style = "color: red">' . $w . '</td>
                       <td style = "color: ">' . $date . '</td>
                       <td style = "color: ">' . $time . '</td>

@@ -365,7 +365,8 @@ if (!(isset($_SESSION['email']))) {
                       <tr class = "table-dark">
                         <td><b>S.N.</b></td>
                         <td><b>Quiz</b></td>
-                        <td><b>Question Solved</b></td>
+                        <td><b>Attempted</b></td>
+                        <td><b>Skipped<b></td>
                         <td><b>Right</b></td>
                         <td><b>Wrong<b></td>
                         <td><b>Date</b></td>
@@ -379,6 +380,7 @@ if (!(isset($_SESSION['email']))) {
           $s = $row['score'];
           $w = $row['wrong'];
           $r = $row['sahi'];
+          $skp = $row['skipped'];
           $qa = $row['level'];
           $dt = $row['date'];
           $q23 = mysqli_query($con, "SELECT title FROM quiz WHERE  eid='$eid' ") or die('Error208');
@@ -394,11 +396,12 @@ if (!(isset($_SESSION['email']))) {
                     <td style = "color: blue" >' . $c . '</td>
                     <td style = "color: #042391" >' . $title . '</td>
                     <td>' . $qa . '</td>
+                    <td>' . $skp . '</td>
                     <td style = "color: green">' . $r . '</td>
                     <td style = "color: red">' . $w . '</td>
-                    <td style = "color: ">' . $date . '</td>
-                    <td style = "color: ">' . $time . '</td>
-                    <td style = "color: blue">' . $s . '</td>
+                    <td>' . $date . '</td>
+                    <td>' . $time . '</td>
+                    <td class="text-primary fw-bolder">' . $s . '</td>
                   </tr>';
         }
             echo '</table></div></div>';
@@ -534,7 +537,7 @@ if (!(isset($_SESSION['email']))) {
   </div><!-- /.modal -->
 
   <!------------------------------------- Modal for admin login ------------------------------------->
-  <div class="modal fade title1" id="adminLogin">
+<div class="modal fade title1" id="adminLogin">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

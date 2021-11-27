@@ -20,7 +20,7 @@
   max-width: 700px;
   box-shadow: 4px 4px 4px black;
   text-shadow: 2px 2px 4px rgb(0, 0, 0);
-  margin-top: 5rem;
+  margin-top: 3.5rem;
 }
 
 .body-without-footer {
@@ -377,7 +377,7 @@ hr {
 
 .timer {
   float: right;
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
   font-family: monospace;
   font-weight: bold;
   font-size: 2.5rem;

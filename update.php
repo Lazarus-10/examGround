@@ -137,7 +137,7 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2) {
     $q = mysqli_query($con, "SELECT * FROM history WHERE eid='$eid' AND email='$email' ") or die(mysqli_error($con));
     $rowcount = mysqli_num_rows($q);
     if ($rowcount == 0) {
-      $q = mysqli_query($con, "INSERT INTO history VALUES('$email','$eid' ,'0','0','0','0',NOW() )") or die(mysqli_error($con));
+      $q = mysqli_query($con, "INSERT INTO history VALUES('$email','$eid' ,'0','0','0','0','0',NOW() )") or die(mysqli_error($con));
     }
   }
   $q = mysqli_query($con, "SELECT * FROM history WHERE eid='$eid' AND email='$email' ") or die(mysqli_error($con)); //fetch the history till this question
@@ -146,16 +146,21 @@ if (@$_GET['q'] == 'quiz' && @$_GET['step'] == 2) {
     $s = $row['score'];
     $r = $row['sahi'];
     $w = $row['wrong'];
+    $skp = $row['skipped'];
   }
 
-  if ($ans == $ansid) {
-    $r++; //increase the correct answer count
-    $s = $s + $sahi; // increase the score for this quiz
-  } else {
-    $w++;
-    $s = $s - $wrong;
+  if(isset($_POST['submit'])){
+    if ($ans == $ansid) {
+      $r++; //increase the correct answer count
+      $s = $s + $sahi; // increase the score for this quiz
+    } else {
+      $w++;
+      $s = $s - $wrong;
+    }
+  }else{
+    $skp++;
   }
-  $q = mysqli_query($con, "UPDATE `history` SET `score`=$s,`level`=$sn,`sahi`=$r,  `wrong` =$w, date= NOW()  WHERE  email = '$email' AND eid = '$eid'") or die(mysqli_error($con));
+  $q = mysqli_query($con, "UPDATE `history` SET `score`=$s,`level`=$sn,`sahi`=$r,  `wrong` =$w, `skipped` = $skp, date= NOW()  WHERE  email = '$email' AND eid = '$eid'") or die(mysqli_error($con));
   if ($sn != $total) {
     $sn++;
     header("location:account.php?q=quiz&step=2&eid=$eid&n=$sn&t=$total&s=$seed") or die(mysqli_error($con));

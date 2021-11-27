@@ -240,7 +240,7 @@ if (!(isset($_SESSION['email']))) {
               </script>';
             echo
             '
-            <span id="countdown" class="timer circle"></span>
+            <span id="countdown" class="timer"></span>
             <script>
   
               function secondPassed() {
@@ -257,7 +257,7 @@ if (!(isset($_SESSION['email']))) {
                   clearInterval(countdownTimer);
                   document.getElementById('; echo'"countdown"';echo').innerHTML = "Buzz Buzz";
                   $(document).ready(function() {
-                    $("#submit-btn").click();
+                    $("#skip-btn").click();
                   });
                 } else {
                   seconds--;
@@ -268,18 +268,18 @@ if (!(isset($_SESSION['email']))) {
 
 
             <div class="container container2">
-                <div class="question ml-sm-3 pl-sm-3 pt-2">';
+                <div>';
 
             /***************  Printing the question ***************/
             while ($row = mysqli_fetch_array($q)) {
               $qns = $row['qns'];
               $qid = $row['qid'];
-              echo '<h5 class="py-2" style="font-size:1.3rem; font-weight:none; margin:0;"><b>Q' . $sn . '. ' . $qns . '</b></h5>';
+              echo '<h5 class="py-1" style="font-size:1.3rem; font-weight:none; margin:0;"><b>Q' . $sn . '. ' . $qns . '</b></h5>';
             }
             /***************  Printing the options ***************/
             $q = mysqli_query($con, "SELECT * FROM options WHERE qid='$qid' ");
             echo '<div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
-             <form  action="update.php?q=quiz&step=2&eid=' . $eid . '&n=' . $sn . '&t=' . $total . '&qid=' . $qid . '&s=' . $seed . '" method="POST" class="form-horizontal"><br />';
+             <form  action="update.php?q=quiz&step=2&eid=' . $eid . '&n=' . $sn . '&t=' . $total . '&qid=' . $qid . '&s=' . $seed . '" method="POST" class="form-horizontal">';
 
             while ($row = mysqli_fetch_array($q)) {
               $option = $row['option'];
@@ -288,10 +288,11 @@ if (!(isset($_SESSION['email']))) {
               echo '<label class="options">' . $option . '<input type="radio" name="ans" value = "' . $optionid . '"> <span class="checkmark"></span> </label>';
             }
             echo
-            '<div class="d-flex align-items-center pt-3 qus">
-            <div class="ms-auto"> <button id="submit-btn" class="quizBtn btn btn-primary bg-primary text-black" style = "text-shadow:none;" type="submit">Submit</button> </div>
-                  </div>
-                </form>
+            '<div class="d-flex align-items-center pt-3 mt-3 qus">
+            <button id="skip-btn" name="skip" class="quizBtn btn btn-secondary text-white" style = "text-shadow:none;" type="submit">Skip</button>
+            <div class="ms-auto"> <button id="submit-btn" name="submit" class="quizBtn btn btn-primary bg-primary text-black" style = "text-shadow:none;" type="submit">Submit</button> </div>
+            </div>
+            </form>
               </div>';
             echo '</div>
             </div>';
@@ -318,6 +319,7 @@ if (!(isset($_SESSION['email']))) {
               $w = $row['wrong'];
               $r = $row['sahi'];
               $qa = $row['level'];
+              $skp = $row['skipped'];
               echo  '<tr class="table-primary">
                       <td class="text-start">Total Questions</td>
                       <td>' . $qa . '</td>
@@ -329,6 +331,10 @@ if (!(isset($_SESSION['email']))) {
                     <tr class="text-danger table-primary">
                       <td class="text-start">Wrong Answers&nbsp;<i class="fa fa-times-circle"></i></td>
                       <td>' . $w . '&nbsp;(-' . $perWrong * $w . ')</td>
+                    </tr>
+                    <tr class="text-warning table-primary">
+                      <td class="text-start">Skipped Questions&nbsp;<i class="fa fa-forward"></i></td>
+                      <td>' . $skp . '&nbsp;(+0)</td>
                     </tr>
                     <tr class="text-primary table-primary">
                       <td class="text-start">Score&nbsp;<i class="fa fa-star"></i></td>

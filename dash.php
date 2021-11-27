@@ -143,6 +143,7 @@
                   <a href="account.php?q=quiz&step=2&eid=' . $eid . '&n=1&t=' . $total . '&s=' . $seed . '" class="pull-right btn btn-success quizBtn" style="margin:0px; padding-right: 1.30rem; padding-left: 1.30rem;" ><b> Test </b></a>
               </b>
             </td>
+           
           </tr>';
           }
           echo '</table></div></div>';
@@ -305,6 +306,7 @@
                         <td><b>Quiz</b></td>
                         <td><b>Question Solved</b></td>
                         <td><b>Right</b></td>
+                        <td><b>Skipped<b></td>
                         <td><b>Wrong<b></td>
                         <td><b>Date</b></td>
                         <td><b>Time</b></td>
@@ -316,6 +318,7 @@
             $eid = $row['eid'];
             $s = $row['score'];
             $w = $row['wrong'];
+            $skp = $row['skipped'];
             $r = $row['sahi'];
             $qa = $row['level'];
             $dt = $row['date'];
@@ -333,6 +336,7 @@
                       <td style = "color: #042391" >' . $title . '</td>
                       <td>' . $qa . '</td>
                       <td style = "color: green">' . $r . '</td>
+                      <td class="text-primary">' . $skp . '</td>
                       <td style = "color: red">' . $w . '</td>
                       <td style = "color: ">' . $date . '</td>
                       <td style = "color: ">' . $time . '</td>
